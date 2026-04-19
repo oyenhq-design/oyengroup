@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 export default function Hero() {
   const [activeNav, setActiveNav] = useState('results');
+  const [contentKey, setContentKey] = useState(0);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const navItems = [
     { id: 'results', label: 'Results announcement' },
@@ -12,6 +14,8 @@ export default function Hero() {
     { id: 'sustainability', label: 'Sustainability' },
     { id: 'powered', label: 'Powered by OYEN' },
   ];
+
+  const navOrder = ['results', 'partnerships', 'sustainability', 'powered'];
 
   const contentData = {
     results: {
@@ -46,8 +50,57 @@ export default function Hero() {
 
   const current = contentData[activeNav as keyof typeof contentData];
 
+  // Auto-switch tabs every 6 seconds
+  useEffect(() => {
+    const switchTab = () => {
+      setActiveNav((prev) => {
+        const currentIndex = navOrder.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % navOrder.length;
+        return navOrder[nextIndex];
+      });
+      setContentKey((prev) => prev + 1); // Trigger fade animation
+    };
+
+    timerRef.current = setInterval(switchTab, 6000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
+
+  // Handle manual tab click
+  const handleTabClick = (tabId: string) => {
+    setActiveNav(tabId);
+    setContentKey((prev) => prev + 1);
+
+    // Reset timer
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setActiveNav((prev) => {
+        const currentIndex = navOrder.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % navOrder.length;
+        return navOrder[nextIndex];
+      });
+      setContentKey((prev) => prev + 1);
+    }, 6000);
+  };
+
   return (
     <section className="h-screen relative overflow-hidden flex flex-col">
+      {/* Animation Keyframes */}
+      <style>{`
+        @keyframes slideUnderline {
+          from {
+            transform: scaleX(0);
+            transform-origin: left;
+          }
+          to {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+      `}</style>
+
       {/* Background Image with Gradient Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -66,12 +119,12 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* LEFT: Dynamic Text Content + Tabs */}
             <div className="flex flex-col justify-center max-w-2xl">
-              {/* Animated Container */}
+              {/* Animated Container with Fade Transition */}
               <div
-                className="transition-all duration-300"
+                key={contentKey}
+                className="transition-opacity duration-500"
                 style={{
                   opacity: 1,
-                  transform: 'translateY(0)',
                 }}
               >
                 {/* Label */}
@@ -117,21 +170,39 @@ export default function Hero() {
                   {/* Tab Navigation */}
                   <div>
                     {/* Subtle Divider Line */}
-                    <div className="border-t border-[#1f2937] mb-4" />
+                    <div className="border-t border-[#1f2937] mb-6" />
 
-                    {/* Tab Buttons */}
-                    <div className="flex items-center justify-start gap-8 overflow-x-auto pb-2">
+                    {/* Tab Buttons with Progress Animation */}
+                    <div className="flex items-center justify-start gap-8 overflow-x-auto pb-3">
                       {navItems.map((item) => (
                         <button
                           key={item.id}
-                          onClick={() => setActiveNav(item.id)}
-                          className={`text-sm font-medium whitespace-nowrap transition duration-300 pb-2 border-b-2 ${
-                            activeNav === item.id
-                              ? 'text-white border-b-[#d4af37]'
-                              : 'text-[#9ca3af] border-b-transparent hover:text-white'
-                          }`}
+                          onClick={() => handleTabClick(item.id)}
+                          className="relative text-base font-medium whitespace-nowrap transition duration-300"
+                          style={{
+                            color: activeNav === item.id ? '#ffffff' : '#9ca3af',
+                          }}
+                          onMouseEnter={(e) => {
+                            if (activeNav !== item.id) {
+                              e.currentTarget.style.color = '#ffffff';
+                            }
+                          }}
+                          onMouseLeave={(e) => {
+                            if (activeNav !== item.id) {
+                              e.currentTarget.style.color = '#9ca3af';
+                            }
+                          }}
                         >
                           {item.label}
+                          {activeNav === item.id && (
+                            <span
+                              className="absolute bottom-0 left-0 h-0.5 bg-[#d4af37]"
+                              style={{
+                                animation: 'slideUnderline 6s linear forwards',
+                                width: '100%',
+                              }}
+                            />
+                          )}
                         </button>
                       ))}
                     </div>
