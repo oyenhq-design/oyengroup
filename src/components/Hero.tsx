@@ -35,17 +35,17 @@ export default function Hero() {
             <div className="flex flex-col justify-center max-w-2xl">
               {/* Label */}
               <p className="text-sm tracking-widest text-[#d4af37] uppercase font-semibold mb-8">
-                Results announcement
+                Unified Energy Ecosystem
               </p>
 
               {/* Headline */}
               <h1 className="text-5xl lg:text-6xl font-semibold leading-tight text-white mb-8">
-                Leading the Energy Transition
+                Powering the Future of Energy
               </h1>
 
               {/* Supporting Paragraph */}
               <p className="text-lg text-gray-300 mb-12 leading-relaxed">
-                Delivering innovative solutions that advance sustainable energy and drive global transformation with excellence and integrity.
+                OYEN Group is an integrated petroleum and energy company delivering solutions across upstream, midstream, and downstream operations—combining innovation, efficiency, and sustainability.
               </p>
 
               {/* CTA: Minimal Text + Arrow */}
@@ -53,7 +53,7 @@ export default function Hero() {
                 href="/contact"
                 className="inline-flex items-center gap-4 text-[#d4af37] hover:text-[#e5c158] transition duration-300 font-medium group"
               >
-                <span>Discover More</span>
+                <span>Explore Solutions</span>
                 <div className="w-10 h-10 border border-[#d4af37] rounded-full flex items-center justify-center group-hover:bg-[#d4af37]/10 transition">
                   <svg
                     className="w-5 h-5 group-hover:translate-x-1 transition"
