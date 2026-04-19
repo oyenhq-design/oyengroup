@@ -23,8 +23,8 @@ export default function CaseStudyDetailPage({ params }: { params: { id: string }
 
   return (
     <main>
-      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-12 md:py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-20 md:py-24 lg:py-32">
+        <div className="max-w-4xl mx-auto px-6">
           <Link href="/case-studies" className="text-blue-100 hover:text-white mb-4 inline-block">
             ← Back to Case Studies
           </Link>
@@ -39,8 +39,8 @@ export default function CaseStudyDetailPage({ params }: { params: { id: string }
         </div>
       </section>
 
-      <article className="py-16 md:py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article className="py-20 md:py-24 lg:py-32 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
           <img
             src={caseStudy.image}
             alt={caseStudy.title}

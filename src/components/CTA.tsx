@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 export default function CTA() {
   return (
-    <section className="bg-blue-600 text-white py-16 md:py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
-        <p className="text-xl mb-8 text-blue-100">
+    <section className="bg-blue-600 text-white py-20 md:py-24 lg:py-32">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">Ready to Get Started?</h2>
+        <p className="text-lg md:text-xl mb-12 text-blue-100 leading-relaxed max-w-2xl mx-auto">
           Let's work together to bring your vision to life and achieve your business objectives.
         </p>
         <Link

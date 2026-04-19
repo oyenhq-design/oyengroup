@@ -6,17 +6,17 @@ export const metadata = {
 export default function About() {
   return (
     <main>
-      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Oyengroup</h1>
-          <p className="text-xl text-blue-100 max-w-2xl">
+      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-20 md:py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">About Oyengroup</h1>
+          <p className="text-base md:text-lg text-blue-100 leading-relaxed max-w-2xl">
             Discover our story, values, and commitment to excellence.
           </p>
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>

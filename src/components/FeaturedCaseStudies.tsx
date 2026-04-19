@@ -22,22 +22,22 @@ export default function FeaturedCaseStudies() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Case Studies</h2>
-          <p className="text-xl text-gray-600">
+    <section className="py-20 md:py-24 lg:py-32 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Case Studies</h2>
+          <p className="text-base md:text-lg text-gray-600 leading-relaxed">
             See how we've helped leading organizations achieve their transformation goals
           </p>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8 lg:space-y-12">
           {caseStudies.map((caseStudy, index) => (
             <Link key={caseStudy.id} href={`/case-studies/${caseStudy.id}`}>
               <div
                 className={`flex flex-col ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } gap-8 items-center bg-white p-8 rounded-lg hover:shadow-lg transition cursor-pointer group`}
+                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                } gap-8 lg:gap-12 items-center bg-white p-8 lg:p-10 rounded-lg hover:shadow-lg transition cursor-pointer group border border-gray-100`}
               >
                 <div className="flex-1">
                   <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">

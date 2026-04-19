@@ -26,18 +26,18 @@ export default function ReportsSection() {
   const types = Array.from(new Set(reports.map((r) => r.type)));
 
   return (
-    <section className="py-16 md:py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Reports & Documents</h2>
-        <p className="text-xl text-gray-600 mb-12">
+    <section className="py-20 md:py-24 lg:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Reports & Documents</h2>
+        <p className="text-base md:text-lg text-gray-600 mb-12 leading-relaxed max-w-2xl">
           Access our latest financial reports, sustainability initiatives, and research publications
         </p>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-3 mb-8">
+        <div className="flex flex-wrap gap-3 mb-10">
           <button
             onClick={() => setFilterType(null)}
-            className={`px-4 py-2 rounded-full font-semibold transition ${
+            className={`px-6 py-2 rounded-full font-semibold transition text-sm ${
               filterType === null
                 ? 'bg-blue-600 text-white'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
