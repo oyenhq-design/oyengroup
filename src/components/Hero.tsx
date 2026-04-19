@@ -168,17 +168,17 @@ export default function Hero() {
                   </Link>
 
                   {/* Tab Navigation */}
-                  <div className="mt-3">
+                  <div className="mt-4">
                     {/* Subtle Divider Line */}
                     <div className="border-t border-[#1f2937] mb-6" />
 
                     {/* Tab Buttons with Progress Animation */}
-                    <div className="flex items-center justify-start gap-8 overflow-x-auto pb-3">
+                    <div className="flex items-center justify-start gap-12 pb-3">
                       {navItems.map((item) => (
                         <button
                           key={item.id}
                           onClick={() => handleTabClick(item.id)}
-                          className="relative text-lg font-medium whitespace-nowrap transition-colors duration-300 pb-2"
+                          className="relative text-lg font-medium transition-colors duration-300 pb-3"
                           style={{
                             color: activeNav === item.id ? '#ffffff' : '#9ca3af',
                           }}
