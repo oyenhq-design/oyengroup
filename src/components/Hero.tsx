@@ -89,49 +89,52 @@ export default function Hero() {
                   {current.paragraph}
                 </p>
 
-                {/* CTA: Minimal Text + Arrow */}
-                <Link
-                  href={current.ctaHref}
-                  className="inline-flex items-center gap-4 text-[#d4af37] hover:text-[#e5c158] transition duration-300 font-medium group"
-                >
-                  <span>{current.ctaText}</span>
-                  <div className="w-10 h-10 border border-[#d4af37] rounded-full flex items-center justify-center group-hover:bg-[#d4af37]/10 transition">
-                    <svg
-                      className="w-5 h-5 group-hover:translate-x-1 transition"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </div>
-                </Link>
-
-                {/* Tab Navigation - Inside Content */}
-                <div className="mt-12">
-                  {/* Subtle Divider Line */}
-                  <div className="border-t border-[#1f2937] mb-6" />
-
-                  {/* Tab Buttons */}
-                  <div className="flex items-center justify-start gap-8 overflow-x-auto pb-2">
-                    {navItems.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => setActiveNav(item.id)}
-                        className={`text-sm font-medium whitespace-nowrap transition duration-300 pb-2 border-b-2 ${
-                          activeNav === item.id
-                            ? 'text-white border-b-[#d4af37]'
-                            : 'text-[#9ca3af] border-b-transparent hover:text-white'
-                        }`}
+                {/* Hero Actions: CTA + Tabs Container */}
+                <div className="flex flex-col gap-6">
+                  {/* CTA: Minimal Text + Arrow */}
+                  <Link
+                    href={current.ctaHref}
+                    className="inline-flex items-center gap-4 text-[#d4af37] hover:text-[#e5c158] transition duration-300 font-medium group w-fit"
+                  >
+                    <span>{current.ctaText}</span>
+                    <div className="w-10 h-10 border border-[#d4af37] rounded-full flex items-center justify-center group-hover:bg-[#d4af37]/10 transition">
+                      <svg
+                        className="w-5 h-5 group-hover:translate-x-1 transition"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                       >
-                        {item.label}
-                      </button>
-                    ))}
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </div>
+                  </Link>
+
+                  {/* Tab Navigation */}
+                  <div>
+                    {/* Subtle Divider Line */}
+                    <div className="border-t border-[#1f2937] mb-4" />
+
+                    {/* Tab Buttons */}
+                    <div className="flex items-center justify-start gap-8 overflow-x-auto pb-2">
+                      {navItems.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => setActiveNav(item.id)}
+                          className={`text-sm font-medium whitespace-nowrap transition duration-300 pb-2 border-b-2 ${
+                            activeNav === item.id
+                              ? 'text-white border-b-[#d4af37]'
+                              : 'text-[#9ca3af] border-b-transparent hover:text-white'
+                          }`}
+                        >
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
