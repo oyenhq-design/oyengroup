@@ -6,43 +6,43 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-black text-white border-t border-[#111827]">
       <div className="max-w-7xl mx-auto px-6 py-20 md:py-24 lg:py-32">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Oyengroup</h3>
-            <p className="text-gray-400">
+            <h3 className="text-xl font-bold mb-4 text-[#d4af37]">Oyengroup</h3>
+            <p className="text-[#9ca3af]">
               Delivering excellence and innovation in everything we do.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400">
+            <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+            <ul className="space-y-2 text-[#9ca3af]">
               <li>
-                <Link href="/" className="hover:text-white transition">
+                <Link href="/" className="hover:text-[#d4af37] transition">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-white transition">
+                <Link href="/about" className="hover:text-[#d4af37] transition">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition">
+                <Link href="/services" className="hover:text-[#d4af37] transition">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="hover:text-white transition">
+                <Link href="/news" className="hover:text-[#d4af37] transition">
                   News
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition">
+                <Link href="/contact" className="hover:text-[#d4af37] transition">
                   Contact
                 </Link>
               </li>
@@ -51,15 +51,15 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2 text-gray-400">
+            <h4 className="text-lg font-semibold mb-4 text-white\">Resources</h4>
+            <ul className="space-y-2 text-[#9ca3af]">
               <li>
-                <Link href="/case-studies" className="hover:text-white transition">
+                <Link href="/case-studies" className="hover:text-[#d4af37] transition">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/reports" className="hover:text-white transition">
+                <Link href="/reports" className="hover:text-[#d4af37] transition">
                   Reports
                 </Link>
               </li>
@@ -68,16 +68,16 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2 text-gray-400">
+            <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
+            <ul className="space-y-2 text-[#9ca3af]">
               <li>Email: info@oyengroup.com</li>
               <li>Phone: +1 (555) 123-4567</li>
               <li>
                 <div className="flex space-x-4 mt-4">
-                  <a href="#" className="hover:text-white transition">
+                  <a href="#" className="hover:text-[#d4af37] transition">
                     LinkedIn
                   </a>
-                  <a href="#" className="hover:text-white transition">
+                  <a href="#" className="hover:text-[#d4af37] transition">
                     Twitter
                   </a>
                 </div>
@@ -87,12 +87,12 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-700 pt-8">
+        <div className="border-t border-[#111827] pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400">
+            <p className="text-[#9ca3af]">
               &copy; {currentYear} Oyengroup. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0 text-gray-400">
+            <div className="flex space-x-6 mt-4 md:mt-0 text-[#9ca3af]">
               <a href="#" className="hover:text-white transition">
                 Privacy Policy
               </a>

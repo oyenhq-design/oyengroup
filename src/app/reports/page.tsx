@@ -26,16 +26,16 @@ export default function ReportsPage() {
 
   return (
     <main>
-      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-20 md:py-24 lg:py-32">
+      <section className="bg-black text-white py-20 md:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Reports & Documents</h1>
-          <p className="text-base md:text-lg text-blue-100 leading-relaxed max-w-2xl">
+          <p className="text-base md:text-lg text-[#9ca3af] leading-relaxed max-w-2xl">
             Access financial reports, sustainability initiatives, and research publications
           </p>
         </div>
       </section>
 
-      <section className="py-20 md:py-24 lg:py-32 bg-white">
+      <section className="py-20 md:py-24 lg:py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           {/* Filter Buttons */}
           <div className="flex flex-wrap gap-3 mb-12">

@@ -23,14 +23,14 @@ export default function CaseStudyDetailPage({ params }: { params: { id: string }
 
   return (
     <main>
-      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-20 md:py-24 lg:py-32">
+      <section className="bg-black text-white py-20 md:py-24 lg:py-32">
         <div className="max-w-4xl mx-auto px-6">
-          <Link href="/case-studies" className="text-blue-100 hover:text-white mb-4 inline-block">
+          <Link href="/case-studies" className="text-[#d4af37] hover:text-[#e5c158] mb-4 inline-block">
             ← Back to Case Studies
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{caseStudy.title}</h1>
-          <div className="flex flex-wrap gap-4 text-blue-100">
-            <span className="inline-block px-3 py-1 bg-blue-700 rounded-full text-sm">
+          <div className="flex flex-wrap gap-4 text-[#9ca3af]">
+            <span className="inline-block px-3 py-1 bg-[#111827] rounded-full text-sm text-[#d4af37]">
               {caseStudy.industry}
             </span>
             <span>Client: {caseStudy.client}</span>
@@ -39,7 +39,7 @@ export default function CaseStudyDetailPage({ params }: { params: { id: string }
         </div>
       </section>
 
-      <article className="py-20 md:py-24 lg:py-32 bg-white">
+      <article className="py-20 md:py-24 lg:py-32 bg-black">
         <div className="max-w-3xl mx-auto px-6">
           <img
             src={caseStudy.image}
@@ -48,13 +48,13 @@ export default function CaseStudyDetailPage({ params }: { params: { id: string }
           />
 
           {/* Results Highlight */}
-          <div className="bg-linear-to-r from-blue-50 to-blue-100 p-8 rounded-lg mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Results</h2>
+          <div className="bg-[#111827] border border-[#1f2937] p-8 rounded-lg mb-12">
+            <h2 className="text-2xl font-bold text-white mb-6">Key Results</h2>
             <div className="grid grid-cols-3 gap-6">
               {caseStudy.results.map((result, idx) => (
                 <div key={idx}>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">{result.value}</div>
-                  <div className="text-gray-700 font-semibold">{result.metric}</div>
+                  <div className="text-3xl font-bold text-[#d4af37] mb-2">{result.value}</div>
+                  <div className="text-[#9ca3af] font-semibold">{result.metric}</div>
                 </div>
               ))}
             </div>
@@ -63,18 +63,18 @@ export default function CaseStudyDetailPage({ params }: { params: { id: string }
           {/* Content */}
           <div className="prose prose-lg max-w-none mb-12">
             {caseStudy.content.split('\n\n').map((paragraph, idx) => (
-              <p key={idx} className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p key={idx} className="text-lg text-[#9ca3af] mb-6 leading-relaxed">
                 {paragraph}
               </p>
             ))}
           </div>
 
           {/* Download Button */}
-          <div className="border-t pt-8">
+          <div className="border-t border-[#1f2937] pt-8">
             <a
               href={caseStudy.downloadUrl}
               download
-              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+              className="inline-block bg-[#d4af37] text-black px-8 py-3 rounded-lg font-semibold hover:bg-[#e5c158] transition"
             >
               Download Full Case Study PDF
             </a>
@@ -82,13 +82,13 @@ export default function CaseStudyDetailPage({ params }: { params: { id: string }
 
           {/* Related Case Studies */}
           {relatedStudies.length > 0 && (
-            <section className="border-t pt-12 mt-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Case Studies</h2>
+            <section className="border-t border-[#1f2937] pt-12 mt-12">
+              <h2 className="text-3xl font-bold text-white mb-8">Related Case Studies</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {relatedStudies.map((related) => (
                   <Link key={related.id} href={`/case-studies/${related.id}`}>
-                    <div className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition group cursor-pointer h-full">
-                      <div className="h-40 bg-linear-to-br from-blue-400 to-blue-600 overflow-hidden">
+                    <div className="bg-[#111827] rounded-lg overflow-hidden hover:shadow-lg transition group cursor-pointer h-full border border-[#1f2937] hover:border-[#d4af37]">
+                      <div className="h-40 bg-linear-to-br from-[#1f2937] to-[#111827] overflow-hidden">
                         <img
                           src={related.image}
                           alt={related.title}
@@ -96,10 +96,10 @@ export default function CaseStudyDetailPage({ params }: { params: { id: string }
                         />
                       </div>
                       <div className="p-4">
-                        <span className="text-xs font-semibold text-blue-600 bg-blue-100 px-2 py-1 rounded">
+                        <span className="text-xs font-semibold text-[#d4af37] bg-[#1f2937] px-2 py-1 rounded">
                           {related.industry}
                         </span>
-                        <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition line-clamp-2 mt-2">
+                        <h3 className="font-bold text-white mb-2 group-hover:text-[#d4af37] transition line-clamp-2 mt-2">
                           {related.title}
                         </h3>
                       </div>

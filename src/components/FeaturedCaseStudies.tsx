@@ -22,11 +22,11 @@ export default function FeaturedCaseStudies() {
   }
 
   return (
-    <section className="py-20 md:py-24 lg:py-32 bg-gray-50">
+    <section className="py-20 md:py-24 lg:py-32 bg-[#111827]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Case Studies</h2>
-          <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Case Studies</h2>
+          <p className="text-base md:text-lg text-[#9ca3af] leading-relaxed">
             See how we've helped leading organizations achieve their transformation goals
           </p>
         </div>
@@ -37,32 +37,32 @@ export default function FeaturedCaseStudies() {
               <div
                 className={`flex flex-col ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } gap-8 lg:gap-12 items-center bg-white p-8 lg:p-10 rounded-lg hover:shadow-lg transition cursor-pointer group border border-gray-100`}
+                } gap-8 lg:gap-12 items-center bg-black p-8 lg:p-10 rounded-lg hover:shadow-lg transition cursor-pointer group border border-[#111827] hover:border-[#d4af37]`}
               >
                 <div className="flex-1">
-                  <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
+                  <span className="inline-block px-3 py-1 text-sm font-semibold text-[#d4af37] bg-[#1f2937] rounded-full mb-4">
                     {caseStudy.industry}
                   </span>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition">
+                  <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-[#d4af37] transition">
                     {caseStudy.title}
                   </h3>
-                  <p className="text-lg text-gray-700 mb-6">{caseStudy.excerpt}</p>
+                  <p className="text-lg text-[#9ca3af] mb-6">{caseStudy.excerpt}</p>
 
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     {caseStudy.results.map((result, idx) => (
                       <div key={idx}>
-                        <div className="text-2xl font-bold text-blue-600">{result.value}</div>
-                        <div className="text-sm text-gray-600">{result.metric}</div>
+                        <div className="text-2xl font-bold text-[#d4af37]">{result.value}</div>
+                        <div className="text-sm text-[#9ca3af]">{result.metric}</div>
                       </div>
                     ))}
                   </div>
 
-                  <button className="text-blue-600 font-semibold hover:text-blue-700">
+                  <button className="text-[#d4af37] font-semibold hover:text-[#e5c158]">
                     Read Full Case Study →
                   </button>
                 </div>
                 <div className="flex-1">
-                  <div className="h-64 bg-linear-to-br from-blue-400 to-blue-600 rounded-lg overflow-hidden">
+                  <div className="h-64 bg-linear-to-br from-[#1f2937] to-[#111827] rounded-lg overflow-hidden">
                     <img
                       src={caseStudy.image}
                       alt={caseStudy.title}
@@ -77,7 +77,7 @@ export default function FeaturedCaseStudies() {
 
         <div className="text-center mt-12">
           <Link href="/case-studies">
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+            <button className="bg-[#d4af37] text-black px-8 py-3 rounded-lg font-semibold hover:bg-[#e5c158] transition">
               View All Case Studies
             </button>
           </Link>

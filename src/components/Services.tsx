@@ -25,11 +25,11 @@ export default function Services() {
   ];
 
   return (
-    <section className="py-20 md:py-24 lg:py-32 bg-white">
+    <section className="py-20 md:py-24 lg:py-32 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">Our Services</h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">Our Services</h2>
+          <p className="text-base md:text-lg text-[#9ca3af] max-w-3xl mx-auto leading-relaxed">
             Comprehensive solutions designed to drive your business forward
           </p>
         </div>
@@ -38,11 +38,11 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-8 rounded-lg shadow-sm hover:shadow-md transition border border-gray-100"
+              className="bg-[#111827] p-8 rounded-lg shadow-sm hover:shadow-md transition border border-[#1f2937] hover:border-[#d4af37]"
             >
               <div className="text-4xl mb-6">{service.icon}</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 leading-tight">{service.title}</h3>
-              <p className="text-base text-gray-600 leading-relaxed">{service.description}</p>
+              <h3 className="text-lg font-semibold text-white mb-4 leading-tight">{service.title}</h3>
+              <p className="text-base text-[#9ca3af] leading-relaxed">{service.description}</p>
             </div>
           ))}
         </div>

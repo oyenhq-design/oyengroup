@@ -41,17 +41,17 @@ export default function Services() {
 
   return (
     <main>
-      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-          <p className="text-xl text-blue-100 max-w-2xl">
+      <section className="bg-black text-white py-20 md:py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Our Services</h1>
+          <p className="text-base md:text-lg text-[#9ca3af] leading-relaxed max-w-2xl">
             Comprehensive solutions designed to meet your business needs.
           </p>
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-24 lg:py-32 bg-black">
+        <div className="max-w-7xl mx-auto px-6">
           {serviceDetails.map((service, index) => (
             <div
               key={service.id}
@@ -59,22 +59,22 @@ export default function Services() {
             >
               <div className="flex-1">
                 <div className="text-5xl mb-4">{service.icon}</div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">{service.title}</h2>
-                <p className="text-lg text-gray-700 mb-6">{service.description}</p>
+                <h2 className="text-3xl font-bold text-white mb-4">{service.title}</h2>
+                <p className="text-lg text-[#9ca3af] mb-6">{service.description}</p>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">Key Features:</h4>
+                  <h4 className="font-semibold text-white mb-3">Key Features:</h4>
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-gray-700">
-                        <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                      <li key={idx} className="flex items-center text-[#9ca3af]">
+                        <span className="w-2 h-2 bg-[#d4af37] rounded-full mr-3"></span>
                         {feature}
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
-              <div className="flex-1 bg-blue-100 h-64 rounded-lg flex items-center justify-center">
-                <span className="text-gray-400">Service visualization</span>
+              <div className="flex-1 bg-[#111827] h-64 rounded-lg flex items-center justify-center border border-[#1f2937]">
+                <span className="text-[#9ca3af]">Service visualization</span>
               </div>
             </div>
           ))}

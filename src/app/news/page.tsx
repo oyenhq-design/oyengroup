@@ -11,28 +11,28 @@ export default function NewsPage() {
 
   return (
     <main>
-      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-20 md:py-24 lg:py-32">
+      <section className="bg-black text-white py-20 md:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">News & Media</h1>
-          <p className="text-base md:text-lg text-blue-100 leading-relaxed max-w-2xl">
+          <p className="text-base md:text-lg text-[#9ca3af] leading-relaxed max-w-2xl">
             Stay informed with the latest updates from Oyengroup
           </p>
         </div>
       </section>
 
-      <section className="py-20 md:py-24 lg:py-32 bg-white">
+      <section className="py-20 md:py-24 lg:py-32 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="bg-gray-50 p-6 rounded-lg sticky top-20">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Categories</h3>
+              <div className="bg-[#111827] p-6 rounded-lg sticky top-20 border border-[#1f2937]">
+                <h3 className="text-lg font-bold text-white mb-4">Categories</h3>
                 <div className="space-y-2">
                   {categories.map((category) => {
                     const count = newsArticles.filter((a) => a.category === category).length;
                     return (
                       <Link key={category} href={`#`}>
-                        <button className="w-full text-left px-4 py-2 rounded hover:bg-blue-100 text-gray-700 hover:text-blue-600 transition">
+                        <button className="w-full text-left px-4 py-2 rounded hover:bg-[#1f2937] text-white hover:text-[#d4af37] transition">
                           {category} ({count})
                         </button>
                       </Link>

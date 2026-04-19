@@ -7,37 +7,37 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-black shadow-md sticky top-0 z-50 border-b border-[#111827]">
       <nav className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Company Name */}
           <div className="shrink-0">
-            <Link href="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition">
+            <Link href="/" className="text-2xl font-bold text-[#d4af37] hover:text-[#e5c158] transition">
               Oyengroup
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-600 transition">
+            <Link href="/" className="text-white hover:text-[#d4af37] transition">
               Home
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 transition">
+            <Link href="/about" className="text-white hover:text-[#d4af37] transition">
               About
             </Link>
-            <Link href="/services" className="text-gray-700 hover:text-blue-600 transition">
+            <Link href="/services" className="text-white hover:text-[#d4af37] transition">
               Services
             </Link>
-            <Link href="/news" className="text-gray-700 hover:text-blue-600 transition">
+            <Link href="/news" className="text-white hover:text-[#d4af37] transition">
               News
             </Link>
-            <Link href="/case-studies" className="text-gray-700 hover:text-blue-600 transition">
+            <Link href="/case-studies" className="text-white hover:text-[#d4af37] transition">
               Case Studies
             </Link>
-            <Link href="/reports" className="text-gray-700 hover:text-blue-600 transition">
+            <Link href="/reports" className="text-white hover:text-[#d4af37] transition">
               Reports
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition">
+            <Link href="/contact" className="text-white hover:text-[#d4af37] transition">
               Contact
             </Link>
           </div>
@@ -46,7 +46,7 @@ export default function Header() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+              className="bg-[#d4af37] text-black px-6 py-2 rounded-lg hover:bg-[#e5c158] transition font-semibold"
             >
               Get Started
             </Link>

@@ -11,16 +11,16 @@ export default function CaseStudiesPage() {
 
   return (
     <main>
-      <section className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-20 md:py-24 lg:py-32">
+      <section className="bg-black text-white py-20 md:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Case Studies</h1>
-          <p className="text-base md:text-lg text-blue-100 leading-relaxed max-w-2xl">
+          <p className="text-base md:text-lg text-[#9ca3af] leading-relaxed max-w-2xl">
             Discover how we've helped leading organizations achieve their transformation goals
           </p>
         </div>
       </section>
 
-      <section className="py-20 md:py-24 lg:py-32 bg-white">
+      <section className="py-20 md:py-24 lg:py-32 bg-[#111827]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="space-y-12">
             {caseStudies.map((caseStudy, index) => (
@@ -28,16 +28,16 @@ export default function CaseStudiesPage() {
                 <div
                   className={`flex flex-col ${
                     index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  } gap-8 items-center bg-gray-50 p-8 rounded-lg hover:shadow-lg transition group cursor-pointer`}
+                  } gap-8 items-center bg-black p-8 rounded-lg hover:shadow-lg transition group cursor-pointer border border-[#111827] hover:border-[#d4af37]`}
                 >
                   <div className="flex-1">
-                    <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
+                    <span className="inline-block px-3 py-1 text-sm font-semibold text-[#d4af37] bg-[#1f2937] rounded-full mb-4">
                       {caseStudy.industry}
                     </span>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition">
+                    <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-[#d4af37] transition">
                       {caseStudy.title}
                     </h3>
-                    <p className="text-lg text-gray-700 mb-6">{caseStudy.excerpt}</p>
+                    <p className="text-lg text-[#9ca3af] mb-6">{caseStudy.excerpt}</p>
 
                     <div className="grid grid-cols-3 gap-4">
                       {caseStudy.results.map((result, idx) => (
