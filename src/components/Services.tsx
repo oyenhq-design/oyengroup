@@ -33,7 +33,7 @@ export default function Services() {
 
           {/* Supporting Paragraph */}
           <p className="text-base md:text-lg text-[#9ca3af] leading-relaxed">
-            Comprehensive solutions and resources tailored to your business objectives and growth aspirations.
+            OYEN Group is an integrated petroleum and energy company delivering solutions across upstream, midstream, and downstream operations—powered by advanced technology, data, and a commitment to innovation, efficiency, and sustainability.
           </p>
         </div>
 
