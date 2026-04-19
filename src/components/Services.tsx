@@ -1,48 +1,51 @@
 'use client';
 
 export default function Services() {
-  const services = [
+  const features = [
     {
-      icon: '🎯',
-      title: 'Strategic Consulting',
-      description: 'Expert guidance to help you achieve your business goals and overcome challenges.',
+      title: 'Tools',
+      description: 'Advanced technology designed for optimal performance and efficiency.',
     },
     {
-      icon: '💻',
-      title: 'Custom Development',
-      description: 'Tailored software solutions designed specifically for your business needs.',
+      title: 'Learning',
+      description: 'Continuous insights and resources to drive innovation and growth.',
     },
     {
-      icon: '🚀',
-      title: 'Digital Transformation',
-      description: 'Modernize your operations and stay competitive in the digital age.',
-    },
-    {
-      icon: '🤝',
-      title: '24/7 Support',
-      description: 'Dedicated support team available round the clock to assist you.',
+      title: 'Insights',
+      description: 'Data-driven intelligence to inform strategic decision making.',
     },
   ];
 
   return (
-    <section className="py-20 md:py-24 lg:py-32 bg-black">
+    <section className="bg-gradient-to-b from-black to-[#0b0b0b] py-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">Our Services</h2>
-          <p className="text-base md:text-lg text-[#9ca3af] max-w-3xl mx-auto leading-relaxed">
-            Comprehensive solutions designed to drive your business forward
+        {/* Intro Block - Center Aligned */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          {/* Label */}
+          <p className="text-sm tracking-widest text-[#d4af37] uppercase font-semibold mb-6">
+            Discover OYEN
+          </p>
+
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl font-semibold leading-tight text-white mb-6">
+            Everything You Need to Succeed
+          </h2>
+
+          {/* Supporting Paragraph */}
+          <p className="text-base md:text-lg text-[#9ca3af] leading-relaxed">
+            Comprehensive solutions and resources tailored to your business objectives and growth aspirations.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {services.map((service, index) => (
+        {/* 3-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-[#111827] p-8 rounded-lg shadow-sm hover:shadow-md transition border border-[#1f2937] hover:border-[#d4af37]"
+              className="bg-[#111] border border-white/5 rounded-xl p-6 hover:border-[#d4af37] transition duration-300"
             >
-              <div className="text-4xl mb-6">{service.icon}</div>
-              <h3 className="text-lg font-semibold text-white mb-4 leading-tight">{service.title}</h3>
-              <p className="text-base text-[#9ca3af] leading-relaxed">{service.description}</p>
+              <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+              <p className="text-sm text-[#9ca3af] leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
