@@ -173,12 +173,12 @@ export default function Hero() {
                     <div className="border-t border-[#1f2937] mb-6" />
 
                     {/* Tab Buttons with Progress Animation */}
-                    <div className="flex items-center justify-start gap-12 pb-3">
+                    <div className="flex items-center justify-between w-full pb-3">
                       {navItems.map((item) => (
                         <button
                           key={item.id}
                           onClick={() => handleTabClick(item.id)}
-                          className="relative text-lg font-medium transition-colors duration-300 pb-3"
+                          className="relative flex-1 text-center text-lg font-medium whitespace-nowrap transition-colors duration-300 pb-3"
                           style={{
                             color: activeNav === item.id ? '#ffffff' : '#9ca3af',
                           }}
@@ -196,11 +196,11 @@ export default function Hero() {
                           {item.label}
                           {activeNav === item.id && (
                             <span
-                              className="absolute left-0 h-0.5 bg-[#d4af37]"
+                              className="absolute left-1/2 transform -translate-x-1/2 h-0.5 bg-[#d4af37]"
                               style={{
                                 bottom: '-6px',
                                 animation: 'slideUnderline 6s linear forwards',
-                                width: '100%',
+                                width: '80%',
                               }}
                             />
                           )}
