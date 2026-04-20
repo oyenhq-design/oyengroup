@@ -1,9 +1,21 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setIsSubmitted(true);
+      setEmail('');
+      setTimeout(() => setIsSubmitted(false), 2000);
+    }
+  };
 
   return (
     <footer className="bg-black text-white">
@@ -80,39 +92,60 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Stay Connected */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-6 uppercase tracking-wider">
-              Contact
+            <h4 className="text-sm font-semibold text-white mb-3 uppercase tracking-wider">
+              Stay Connected
             </h4>
-            <ul className="space-y-3">
-              <li className="text-[#9ca3af] text-sm">
+            <p className="text-xs text-[#9ca3af] mb-4">
+              Get updates on our energy solutions and insights.
+            </p>
+
+            {/* Newsletter Form */}
+            <form onSubmit={handleSubscribe} className="flex flex-col gap-2 mb-6">
+              <input
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="px-3 py-2 bg-black border border-white/15 rounded-md text-white text-sm placeholder-[#6b7280] focus:outline-none focus:border-[#d4af37] transition duration-300"
+              />
+              <button
+                type="submit"
+                className="px-4 py-2 bg-[#d4af37] text-black text-sm font-semibold rounded-md hover:bg-[#e5c158] transition duration-300 w-fit"
+              >
+                {isSubmitted ? '✓ Subscribed' : 'Subscribe'}
+              </button>
+            </form>
+
+            {/* Contact Info */}
+            <div className="space-y-2">
+              <p className="text-xs text-[#9ca3af]">
                 <a href="mailto:info@oyengroup.com" className="hover:text-[#d4af37] transition duration-300">
                   info@oyengroup.com
                 </a>
-              </li>
-              <li className="text-[#9ca3af] text-sm">
+              </p>
+              <p className="text-xs text-[#9ca3af]">
                 <a href="tel:+234" className="hover:text-[#d4af37] transition duration-300">
                   +234 XXX XXX XXXX
                 </a>
-              </li>
-              <li className="pt-2">
-                <div className="flex gap-4">
-                  <a
-                    href="#"
-                    className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300 text-sm"
-                  >
-                    LinkedIn
-                  </a>
-                  <a
-                    href="#"
-                    className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300 text-sm"
-                  >
-                    Twitter
-                  </a>
-                </div>
-              </li>
-            </ul>
+              </p>
+              <div className="flex gap-3 pt-2">
+                <a
+                  href="#"
+                  className="text-xs text-[#9ca3af] hover:text-[#d4af37] transition duration-300"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="#"
+                  className="text-xs text-[#9ca3af] hover:text-[#d4af37] transition duration-300"
+                >
+                  Twitter
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
