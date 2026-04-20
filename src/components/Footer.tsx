@@ -6,43 +6,45 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black text-white border-t border-[#111827]">
-      <div className="max-w-7xl mx-auto px-6 py-20 md:py-24 lg:py-32">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-black text-white">
+      <div className="max-w-7xl mx-auto px-6 py-20 md:py-24 lg:py-32 border-t border-white/8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-12">
           {/* Company Info */}
-          <div>
-            <h3 className="text-xl font-bold mb-4 text-[#d4af37]">OYEN Group</h3>
-            <p className="text-[#9ca3af]">
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold text-white">OYEN Group</h3>
+            <p className="text-sm text-[#9ca3af] leading-relaxed">
               Building a unified energy ecosystem across upstream, midstream, and downstream operations.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
-            <ul className="space-y-2 text-[#9ca3af]">
+            <h4 className="text-sm font-semibold text-white mb-6 uppercase tracking-wider">
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
               <li>
-                <Link href="/" className="hover:text-[#d4af37] transition">
+                <Link href="/" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#d4af37] transition">
+                <Link href="/about" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-[#d4af37] transition">
+                <Link href="/services" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="hover:text-[#d4af37] transition">
+                <Link href="/news" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   News
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#d4af37] transition">
+                <Link href="/contact" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   Contact
                 </Link>
               </li>
@@ -51,25 +53,27 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Resources</h4>
-            <ul className="space-y-2 text-[#9ca3af]">
+            <h4 className="text-sm font-semibold text-white mb-6 uppercase tracking-wider">
+              Resources
+            </h4>
+            <ul className="space-y-3">
               <li>
-                <Link href="/case-studies" className="hover:text-[#d4af37] transition">
+                <Link href="/case-studies" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/reports" className="hover:text-[#d4af37] transition">
+                <Link href="/reports" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   Reports
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#d4af37] transition">
+                <Link href="/about" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   Sustainability
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="hover:text-[#d4af37] transition">
+                <Link href="/news" className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300">
                   Insights
                 </Link>
               </li>
@@ -78,16 +82,32 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
-            <ul className="space-y-2 text-[#9ca3af]">
-              <li>Email: info@oyengroup.com</li>
-              <li>Phone: +234 XXX XXX XXXX</li>
-              <li>
-                <div className="flex space-x-4 mt-4">
-                  <a href="#" className="hover:text-[#d4af37] transition">
+            <h4 className="text-sm font-semibold text-white mb-6 uppercase tracking-wider">
+              Contact
+            </h4>
+            <ul className="space-y-3">
+              <li className="text-[#9ca3af] text-sm">
+                <a href="mailto:info@oyengroup.com" className="hover:text-[#d4af37] transition duration-300">
+                  info@oyengroup.com
+                </a>
+              </li>
+              <li className="text-[#9ca3af] text-sm">
+                <a href="tel:+234" className="hover:text-[#d4af37] transition duration-300">
+                  +234 XXX XXX XXXX
+                </a>
+              </li>
+              <li className="pt-2">
+                <div className="flex gap-4">
+                  <a
+                    href="#"
+                    className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300 text-sm"
+                  >
                     LinkedIn
                   </a>
-                  <a href="#" className="hover:text-[#d4af37] transition">
+                  <a
+                    href="#"
+                    className="text-[#9ca3af] hover:text-[#d4af37] transition duration-300 text-sm"
+                  >
                     Twitter
                   </a>
                 </div>
@@ -96,17 +116,18 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-[#111827] pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-[#9ca3af]">
+        {/* Bottom Bar */}
+        <div className="border-t border-white/8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-sm text-[#9ca3af]">
               &copy; {currentYear} OYEN Group. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0 text-[#9ca3af]">
-              <a href="#" className="hover:text-white transition">
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="text-[#9ca3af] hover:text-white transition duration-300">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-white transition">
+              <span className="text-[#1f2937]">|</span>
+              <a href="#" className="text-[#9ca3af] hover:text-white transition duration-300">
                 Terms of Service
               </a>
             </div>
