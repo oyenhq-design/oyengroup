@@ -11,9 +11,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-[#d4af37]">Oyengroup</h3>
+            <h3 className="text-xl font-bold mb-4 text-[#d4af37]">OYEN Group</h3>
             <p className="text-[#9ca3af]">
-              Delivering excellence and innovation in everything we do.
+              Building a unified energy ecosystem across upstream, midstream, and downstream operations.
             </p>
           </div>
 
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white\">Resources</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Resources</h4>
             <ul className="space-y-2 text-[#9ca3af]">
               <li>
                 <Link href="/case-studies" className="hover:text-[#d4af37] transition">
@@ -63,6 +63,16 @@ export default function Footer() {
                   Reports
                 </Link>
               </li>
+              <li>
+                <Link href="/about" className="hover:text-[#d4af37] transition">
+                  Sustainability
+                </Link>
+              </li>
+              <li>
+                <Link href="/news" className="hover:text-[#d4af37] transition">
+                  Insights
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -71,7 +81,7 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
             <ul className="space-y-2 text-[#9ca3af]">
               <li>Email: info@oyengroup.com</li>
-              <li>Phone: +1 (555) 123-4567</li>
+              <li>Phone: +234 XXX XXX XXXX</li>
               <li>
                 <div className="flex space-x-4 mt-4">
                   <a href="#" className="hover:text-[#d4af37] transition">
@@ -90,7 +100,7 @@ export default function Footer() {
         <div className="border-t border-[#111827] pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-[#9ca3af]">
-              &copy; {currentYear} Oyengroup. All rights reserved.
+              &copy; {currentYear} OYEN Group. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0 text-[#9ca3af]">
               <a href="#" className="hover:text-white transition">
