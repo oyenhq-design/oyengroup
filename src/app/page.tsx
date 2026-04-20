@@ -4,6 +4,7 @@ import Statistics from '@/components/Statistics';
 import FeaturedNews from '@/components/FeaturedNews';
 import FeaturedCaseStudies from '@/components/FeaturedCaseStudies';
 import ReportsSection from '@/components/ReportsSection';
+import StayConnected from '@/components/StayConnected';
 import CTA from '@/components/CTA';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <FeaturedNews />
       <FeaturedCaseStudies />
       <ReportsSection />
+      <StayConnected />
       <CTA />
     </main>
   );
