@@ -23,7 +23,7 @@ export default function Statistics() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -38,19 +38,6 @@ export default function Statistics() {
       ref={sectionRef}
       className="py-20 md:py-24 lg:py-32 bg-[#111827] text-white"
     >
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center leading-tight">
           At a Glance
@@ -63,11 +50,12 @@ export default function Statistics() {
               className="text-center"
               style={{
                 opacity: animatedItems.has(index) ? 1 : 0,
+                filter: animatedItems.has(index) ? 'blur(0)' : 'blur(4px)',
                 transform: animatedItems.has(index)
                   ? 'translateY(0)'
-                  : 'translateY(20px)',
-                transition: 'opacity 0.7s ease-out, transform 0.7s ease-out',
-                willChange: 'opacity, transform',
+                  : 'translateY(12px)',
+                transition: 'opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.9s cubic-bezier(0.22, 1, 0.36, 1)',
+                willChange: 'opacity, transform, filter',
               }}
             >
               <div className="text-6xl md:text-7xl font-bold text-[#d4af37] mb-6 leading-tight">
