@@ -1,5 +1,4 @@
 import Hero from '@/components/Hero';
-import AtAGlance from '@/components/AtAGlance';
 import Services from '@/components/Services';
 import Statistics from '@/components/Statistics';
 import FeaturedNews from '@/components/FeaturedNews';
@@ -11,7 +10,6 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <AtAGlance />
       <Services />
       <Statistics />
       <FeaturedNews />
