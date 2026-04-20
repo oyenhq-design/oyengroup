@@ -40,12 +40,12 @@ export default function Header() {
 
   const aboutMenuItems = [
     { label: 'About us', href: '#', isSectionLabel: true },
-    { label: 'At a glance', href: '/' },
-    { label: 'Our leadership', href: '/about', hasArrow: true },
-    { label: 'Our governance', href: '/about', hasArrow: true },
-    { label: 'Our offices and facilities', href: '/about' },
-    { label: 'Our history', href: '/about', hasArrow: true },
-    { label: 'Our brand', href: '/about', hasArrow: true },
+    { label: 'At a glance', href: '/about/at-a-glance' },
+    { label: 'Our leadership', href: '/about/leadership', hasArrow: true },
+    { label: 'Our governance', href: '/about/governance', hasArrow: true },
+    { label: 'Our offices and facilities', href: '/about/offices' },
+    { label: 'Our history', href: '/about/history', hasArrow: true },
+    { label: 'Our brand', href: '/about/brand', hasArrow: true },
   ];
 
   return (
