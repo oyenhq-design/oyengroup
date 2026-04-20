@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function Statistics() {
   const [animatedItems, setAnimatedItems] = useState(new Set());
-  const [ctaVisible, setCtaVisible] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -14,17 +14,17 @@ export default function Statistics() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Animate items one by one
-            statistics.forEach((_, index) => {
-              setTimeout(() => {
-                setAnimatedItems((prev) => new Set(prev).add(index));
-              }, index * 120); // 120ms stagger between items
-            });
+            // Animate header first
+            setHeaderVisible(true);
 
-            // Animate CTA after items finish
+            // Animate items after header
             setTimeout(() => {
-              setCtaVisible(true);
-            }, statistics.length * 120 + 200);
+              statistics.forEach((_, index) => {
+                setTimeout(() => {
+                  setAnimatedItems((prev) => new Set(prev).add(index));
+                }, index * 120);
+              });
+            }, 400);
 
             // Stop observing after animation starts
             observer.unobserve(entry.target);
@@ -47,6 +47,69 @@ export default function Statistics() {
       className="py-20 md:py-24 lg:py-32 bg-[#111827] text-white"
     >
       <style>{`
+        .header-container {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          margin-bottom: 16px;
+          opacity: 0;
+          animation: fadeInHeader 0.6s ease forwards;
+        }
+
+        @keyframes fadeInHeader {
+          from {
+            opacity: 0;
+            transform: translateY(-8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .header-title {
+          font-size: 2.25rem;
+          font-weight: bold;
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+          .header-title {
+            font-size: 3rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .header-title {
+            font-size: 3.5rem;
+          }
+        }
+
+        .divider-line {
+          flex-grow: 1;
+          height: 1px;
+          background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.15),
+            rgba(255, 255, 255, 0)
+          );
+          animation: lineGrow 0.7s ease forwards 0.2s;
+          animation-fill-mode: both;
+        }
+
+        @keyframes lineGrow {
+          from {
+            opacity: 0;
+            width: 0;
+          }
+          to {
+            opacity: 1;
+            width: 100%;
+          }
+        }
+
         .cta-link {
           position: relative;
           display: inline-flex;
@@ -55,8 +118,20 @@ export default function Statistics() {
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
           font-size: 0.95rem;
-          transition: color 0.25s ease;
           text-decoration: none;
+          white-space: nowrap;
+          flex-shrink: 0;
+          transition: color 0.25s ease;
+          animation: fadeInCta 0.6s ease forwards 0.4s;
+        }
+
+        @keyframes fadeInCta {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
 
         .cta-link::before {
@@ -86,31 +161,22 @@ export default function Statistics() {
         .cta-link:hover .cta-arrow {
           transform: translateX(4px);
         }
-
-        .cta-container {
-          opacity: 0;
-          transform: translateY(10px);
-          animation: fadeInUp 0.6s ease forwards;
-          animation-delay: 0.2s;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center leading-tight">
-          At a Glance
-        </h2>
+        {/* Integrated Header with CTA */}
+        {headerVisible && (
+          <div className="header-container">
+            <h2 className="header-title">At a Glance</h2>
+            <div className="divider-line" />
+            <Link href="/about/at-a-glance" className="cta-link">
+              <span>Explore More</span>
+              <span className="cta-arrow">→</span>
+            </Link>
+          </div>
+        )}
 
+        {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {statistics.map((stat, index) => (
             <div
@@ -138,16 +204,6 @@ export default function Statistics() {
             </div>
           ))}
         </div>
-
-        {/* CTA Footer */}
-        {ctaVisible && (
-          <div className="cta-container mt-16 md:mt-20 lg:mt-24 pt-12 border-t border-white/15 flex justify-end">
-            <Link href="/about/at-a-glance" className="cta-link">
-              <span>Explore More</span>
-              <span className="cta-arrow">→</span>
-            </Link>
-          </div>
-        )}
       </div>
     </section>
   );
