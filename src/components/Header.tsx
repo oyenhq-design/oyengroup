@@ -7,8 +7,10 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showAboutDropdown, setShowAboutDropdown] = useState(false);
+  const [aboutHovered, setAboutHovered] = useState(false);
+  const [aboutLocked, setAboutLocked] = useState(false);
   const aboutDropdownRef = useRef<HTMLDivElement>(null);
+  const closeDelayRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,15 +20,68 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown when clicking outside
+  // Handle click outside - close dropdown and unlock
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(event.target as Node)) {
-        setShowAboutDropdown(false);
+        setAboutHovered(false);
+        setAboutLocked(false);
+        if (closeDelayRef.current) {
+          clearTimeout(closeDelayRef.current);
+        }
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Handle ESC key
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setAboutHovered(false);
+        setAboutLocked(false);
+        if (closeDelayRef.current) {
+          clearTimeout(closeDelayRef.current);
+        }
+      }
+    };
+    document.addEventListener('keydown', handleEscKey);
+    return () => document.removeEventListener('keydown', handleEscKey);
+  }, []);
+
+  // Handle dropdown close with delay
+  const handleAboutMouseLeave = () => {
+    if (aboutLocked) return; // Don't close if locked
+
+    if (closeDelayRef.current) {
+      clearTimeout(closeDelayRef.current);
+    }
+
+    closeDelayRef.current = setTimeout(() => {
+      setAboutHovered(false);
+    }, 100); // 100ms delay before closing
+  };
+
+  const handleAboutMouseEnter = () => {
+    if (closeDelayRef.current) {
+      clearTimeout(closeDelayRef.current);
+    }
+    setAboutHovered(true);
+  };
+
+  const handleAboutClick = () => {
+    setAboutLocked(!aboutLocked);
+    setAboutHovered(true);
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (closeDelayRef.current) {
+        clearTimeout(closeDelayRef.current);
+      }
+    };
   }, []);
 
   const navLinks = [
@@ -77,16 +132,17 @@ export default function Header() {
 
         .about-dropdown-item.has-arrow:hover {
           transform: translateX(4px);
+          transition: transform 0.3s ease;
         }
 
-        .about-dropdown-enter {
-          animation: aboutDropdownEnter 0.3s ease forwards;
+        .dropdown-enter {
+          animation: dropdownEnter 0.2s ease forwards;
         }
 
-        @keyframes aboutDropdownEnter {
+        @keyframes dropdownEnter {
           from {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-8px);
           }
           to {
             opacity: 1;
@@ -162,23 +218,27 @@ export default function Header() {
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) =>
                 link.hasDropdown ? (
-                  <div key={link.label} className="relative" ref={aboutDropdownRef}>
+                  <div
+                    key={link.label}
+                    className="relative"
+                    ref={aboutDropdownRef}
+                    onMouseEnter={handleAboutMouseEnter}
+                    onMouseLeave={handleAboutMouseLeave}
+                  >
                     <button
-                      onClick={() => setShowAboutDropdown(!showAboutDropdown)}
-                      onMouseEnter={() => setShowAboutDropdown(true)}
-                      onMouseLeave={() => setShowAboutDropdown(false)}
+                      onClick={handleAboutClick}
                       className="text-xs font-semibold text-white hover:text-[#d4af37] transition tracking-wider group relative"
                     >
                       {link.label}
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
                     </button>
 
-                    {/* Dropdown Menu */}
-                    {showAboutDropdown && (
+                    {/* Dropdown Menu - Show when hovered or locked */}
+                    {(aboutHovered || aboutLocked) && (
                       <div
-                        className="about-dropdown-enter absolute top-full left-0 mt-2 w-72 bg-gradient-to-b from-[#111] to-[#0b0b0b] border-t border-[#1f2937] rounded-lg shadow-xl about-dropdown-backdrop"
-                        onMouseEnter={() => setShowAboutDropdown(true)}
-                        onMouseLeave={() => setShowAboutDropdown(false)}
+                        className="dropdown-enter absolute top-full left-0 mt-2 w-72 bg-gradient-to-b from-[#111] to-[#0b0b0b] border-t border-[#1f2937] rounded-lg shadow-xl about-dropdown-backdrop"
+                        onMouseEnter={handleAboutMouseEnter}
+                        onMouseLeave={handleAboutMouseLeave}
                       >
                         {/* Soft divider */}
                         <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mt-0" />
@@ -196,6 +256,11 @@ export default function Header() {
                               } ${
                                 item.hasArrow ? 'has-arrow' : ''
                               }`}
+                              onClick={() => {
+                                // Close dropdown when clicking a link
+                                setAboutHovered(false);
+                                setAboutLocked(false);
+                              }}
                             >
                               {item.label}
                             </Link>
