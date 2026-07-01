@@ -58,35 +58,11 @@ export default function Footer() {
             {/* Company Info */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="footer-gold-grad-1" x1="30%" y1="10%" x2="70%" y2="90%">
-                      <stop offset="0%" stopColor="#FFF3B3" />
-                      <stop offset="30%" stopColor="#D4AF37" />
-                      <stop offset="70%" stopColor="#AA7A1E" />
-                      <stop offset="100%" stopColor="#5B3E00" />
-                    </linearGradient>
-                    <linearGradient id="footer-gold-grad-2" x1="70%" y1="90%" x2="30%" y2="10%">
-                      <stop offset="0%" stopColor="#FFF3B3" />
-                      <stop offset="30%" stopColor="#D4AF37" />
-                      <stop offset="70%" stopColor="#AA7A1E" />
-                      <stop offset="100%" stopColor="#5B3E00" />
-                    </linearGradient>
-                    <filter id="footer-logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" floodColor="#8B6508" floodOpacity="0.25" />
-                    </filter>
-                  </defs>
-                  <g filter="url(#footer-logo-shadow)">
-                    <path
-                      d="M 50 14 C 70 14 86 30 86 50 C 86 64 78 76 66 82 C 57 86 48 87 40 85 C 46 80 50 74 53 66 C 55 60 55 54 53 48 C 50 38 41 31 31 30 C 37 25 46 22 55 22 C 68 22 77 31 77 44 C 77 54 70 63 60 67 C 68 62 71 52 69 43 C 67 34 59 27 50 27 C 42 27 35 31 31 37 C 33 24 40 14 50 14 Z"
-                      fill="url(#footer-gold-grad-1)"
-                    />
-                    <path
-                      d="M 50 86 C 30 86 14 70 14 50 C 14 36 22 24 34 18 C 43 14 52 13 60 15 C 54 20 50 26 47 34 C 45 40 45 46 47 52 C 50 62 59 69 69 70 C 63 75 54 78 45 78 C 32 78 23 69 23 56 C 23 46 30 37 40 33 C 32 38 29 48 31 57 C 33 66 41 73 50 73 C 58 73 65 69 69 63 C 67 76 60 86 50 86 Z"
-                      fill="url(#footer-gold-grad-2)"
-                    />
-                  </g>
-                </svg>
+                <img
+                  src="/logo.png"
+                  alt="Oyen Group Logo"
+                  className="w-8 h-8 object-contain"
+                />
                 <div className="flex flex-col justify-center leading-none text-white">
                   <span className="text-lg font-bold tracking-tight">OYEN</span>
                   <span className="text-[8px] font-semibold tracking-[0.25em] text-gray-400 uppercase mt-0.5">GROUP</span>
