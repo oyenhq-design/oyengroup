@@ -36,20 +36,21 @@ export default function LayeredScrollContainer({ children }: LayeredScrollContai
             if (nextRect.top < windowHeight && nextRect.top > 0) {
               const progress = (windowHeight - nextRect.top) / windowHeight; // 0 to 1
               
-              // Parallax movement for outgoing section (slower than normal scroll)
-              const translateY = -progress * (windowHeight * 0.15); // moves up gradually by 15% of viewport
-              const scale = 1 - progress * 0.04; // subtle scale down to 96%
-              const opacity = 1 - progress * 0.3; // subtle fade out
+              // True slow-scroll parallax: Translate the outgoing section downwards 
+              // to offset the page's upward scroll, making it move up at exactly half-speed.
+              const translateY = progress * (windowHeight * 0.45); 
+              const scale = 1 - progress * 0.025; // extremely subtle Apple-like depth scale
+              const opacity = 1 - progress * 0.15; // remains highly visible longer
 
-              section.style.transform = `translateY(${translateY}px) scale(${scale})`;
+              section.style.transform = `translateY(${translateY}px) scale(${scale}) translateZ(0)`;
               section.style.opacity = `${opacity}`;
             } else if (nextRect.top <= 0) {
-              // Once next section fully covers this one, hide it / keep it shifted
-              section.style.transform = `translateY(${-windowHeight * 0.15}px) scale(0.96)`;
-              section.style.opacity = '0.7';
+              // Lock it at the fully transition state
+              section.style.transform = `translateY(${windowHeight * 0.45}px) scale(0.975) translateZ(0)`;
+              section.style.opacity = '0.85';
             } else {
               // Next section hasn't started entering yet
-              section.style.transform = 'translateY(0px) scale(1)';
+              section.style.transform = 'translateY(0px) scale(1) translateZ(0)';
               section.style.opacity = '1';
             }
           } else {
