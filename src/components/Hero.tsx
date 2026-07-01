@@ -33,15 +33,15 @@ export default function Hero() {
     },
     {
       id: 'sustainability',
-      url: '/hero-bg-3.png',
-      position: 'center center',
-      isLight: true,
-    },
-    {
-      id: 'powered',
       url: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1920&h=1080&fit=crop',
       position: 'center center',
       isLight: false,
+    },
+    {
+      id: 'powered',
+      url: '/hero-bg-3.png',
+      position: 'center center',
+      isLight: true,
     },
   ];
 
