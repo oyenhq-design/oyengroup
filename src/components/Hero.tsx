@@ -224,11 +224,11 @@ export default function Hero() {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative flex-1 flex items-center z-20">
+      <div className="relative flex-1 flex items-start pt-16 md:pt-24 lg:pt-32 z-20">
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* LEFT: Dynamic Text Content */}
-            <div className="flex flex-col justify-center max-w-2xl">
+            <div className="flex flex-col max-w-2xl">
               <div
                 key={contentKey}
                 className="transition-opacity duration-500"
