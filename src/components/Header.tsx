@@ -35,9 +35,9 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50">
       {/* Top Utility Bar */}
-      <div className="bg-[#111] border-b border-[#1f2937]">
+      <div className="bg-[#111] border-b border-[#1f2937]/50">
         <div className="max-w-7xl mx-auto px-6 h-11 flex items-center justify-between text-xs">
           {/* Left: Language + Contacts */}
           <div className="hidden md:flex items-center gap-6 text-[#9ca3af]">
@@ -64,7 +64,7 @@ export default function Header() {
         className={`w-full transition-all duration-300 ${
           scrolled
             ? 'bg-[#FAF9F6]/95 backdrop-blur-md shadow-sm border-b border-[#EAE8E4]'
-            : 'bg-[#FAF9F6] border-b border-[#EAE8E4]/50'
+            : 'bg-transparent border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -78,9 +78,13 @@ export default function Header() {
                   alt="Oyen Group Logo"
                   className="w-9 h-9 object-contain transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="flex flex-col justify-center leading-none text-black">
+                <div className={`flex flex-col justify-center leading-none transition-colors duration-300 ${
+                  scrolled ? 'text-black' : 'text-white'
+                }`}>
                   <span className="text-xl font-bold tracking-tight">OYEN</span>
-                  <span className="text-[9px] font-semibold tracking-[0.25em] text-[#6b7280] uppercase mt-0.5">GROUP</span>
+                  <span className={`text-[9px] font-semibold tracking-[0.25em] uppercase mt-0.5 transition-colors duration-300 ${
+                    scrolled ? 'text-[#6b7280]' : 'text-white/70'
+                  }`}>GROUP</span>
                 </div>
               </Link>
             </div>
@@ -91,7 +95,9 @@ export default function Header() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setProductsOpen(!productsOpen)}
-                  className="flex items-center gap-1 text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${
+                    scrolled ? 'text-[#1A1A1A] hover:text-[#D4AF37]' : 'text-white hover:text-[#D4AF37]'
+                  }`}
                 >
                   Products
                   <svg
@@ -123,21 +129,27 @@ export default function Header() {
 
               <Link
                 href="/about#vision"
-                className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  scrolled ? 'text-[#1A1A1A] hover:text-[#D4AF37]' : 'text-white hover:text-[#D4AF37]'
+                }`}
               >
                 Vision
               </Link>
 
               <Link
                 href="/about"
-                className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  scrolled ? 'text-[#1A1A1A] hover:text-[#D4AF37]' : 'text-white hover:text-[#D4AF37]'
+                }`}
               >
                 Company
               </Link>
 
               <Link
                 href="/contact"
-                className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  scrolled ? 'text-[#1A1A1A] hover:text-[#D4AF37]' : 'text-white hover:text-[#D4AF37]'
+                }`}
               >
                 Contact
               </Link>
@@ -147,7 +159,11 @@ export default function Header() {
             <div className="hidden md:flex items-center">
               <Link
                 href="/contact"
-                className="px-6 py-2.5 text-xs font-semibold tracking-wider bg-[#0A0A0A] hover:bg-black text-white rounded-xl transition duration-300 flex items-center gap-2 group shadow-sm"
+                className={`px-6 py-2.5 text-xs font-semibold tracking-wider rounded-xl transition duration-300 flex items-center gap-2 group shadow-sm ${
+                  scrolled
+                    ? 'bg-[#0A0A0A] hover:bg-black text-white'
+                    : 'bg-white hover:bg-gray-100 text-black'
+                }`}
               >
                 Partner With Us
                 <svg
@@ -165,7 +181,9 @@ export default function Header() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-[#1A1A1A] hover:text-[#D4AF37] p-2"
+                className={`p-2 transition-colors duration-300 ${
+                  scrolled ? 'text-[#1A1A1A] hover:text-[#D4AF37]' : 'text-white hover:text-[#D4AF37]'
+                }`}
               >
                 {isOpen ? (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
