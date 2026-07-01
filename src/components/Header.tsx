@@ -41,11 +41,9 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-6 h-11 flex items-center justify-between text-xs">
           {/* Left: Language + Contacts */}
           <div className="hidden md:flex items-center gap-6 text-[#9ca3af]">
-            <button className="hover:text-white transition">العربية</button>
+            <button className="hover:text-white transition font-medium">English</button>
             <span className="text-[#1f2937]">|</span>
-            <button className="hover:text-white transition">English</button>
-            <span className="text-[#1f2937]">|</span>
-            <Link href="/contact" className="hover:text-white transition">
+            <Link href="/contact" className="hover:text-white transition font-medium">
               Global contacts
             </Link>
           </div>
