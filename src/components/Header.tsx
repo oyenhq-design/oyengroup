@@ -75,16 +75,32 @@ export default function Header() {
               <Link href="/" className="flex items-center gap-3 group">
                 <svg className="w-9 h-9 transition-transform duration-500 group-hover:rotate-180" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
-                    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#E5C158" />
-                      <stop offset="50%" stopColor="#D4AF37" />
-                      <stop offset="100%" stopColor="#9E7D3B" />
+                    <linearGradient id="gold-grad-1" x1="30%" y1="10%" x2="70%" y2="90%">
+                      <stop offset="0%" stopColor="#FFF3B3" />
+                      <stop offset="30%" stopColor="#D4AF37" />
+                      <stop offset="70%" stopColor="#AA7A1E" />
+                      <stop offset="100%" stopColor="#5B3E00" />
                     </linearGradient>
+                    <linearGradient id="gold-grad-2" x1="70%" y1="90%" x2="30%" y2="10%">
+                      <stop offset="0%" stopColor="#FFF3B3" />
+                      <stop offset="30%" stopColor="#D4AF37" />
+                      <stop offset="70%" stopColor="#AA7A1E" />
+                      <stop offset="100%" stopColor="#5B3E00" />
+                    </linearGradient>
+                    <filter id="logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" floodColor="#8B6508" floodOpacity="0.25" />
+                    </filter>
                   </defs>
-                  <path
-                    d="M50 10C27.9 10 10 27.9 10 50C10 65.5 18.8 79 31.8 85.5C30.2 75.3 35.2 64.9 44.7 58.7C55.2 51.9 69 53.6 77.7 62.5C72 52.8 60.5 48.5 49.8 52C40.8 55 35.2 64.8 37.8 74.2C39.8 81.3 46.5 86.2 54 86.2C76.1 86.2 94 68.3 94 46.2C94 30.7 85.2 17.2 72.2 10.7C73.8 20.9 68.8 31.3 59.3 37.5C48.8 44.3 35 42.6 26.3 33.7C32 43.4 43.5 47.7 54.2 44.2C63.2 41.2 68.8 31.4 66.2 22C64.2 14.9 57.5 10 50 10Z"
-                    fill="url(#gold-gradient)"
-                  />
+                  <g filter="url(#logo-shadow)">
+                    <path
+                      d="M 50 14 C 70 14 86 30 86 50 C 86 64 78 76 66 82 C 57 86 48 87 40 85 C 46 80 50 74 53 66 C 55 60 55 54 53 48 C 50 38 41 31 31 30 C 37 25 46 22 55 22 C 68 22 77 31 77 44 C 77 54 70 63 60 67 C 68 62 71 52 69 43 C 67 34 59 27 50 27 C 42 27 35 31 31 37 C 33 24 40 14 50 14 Z"
+                      fill="url(#gold-grad-1)"
+                    />
+                    <path
+                      d="M 50 86 C 30 86 14 70 14 50 C 14 36 22 24 34 18 C 43 14 52 13 60 15 C 54 20 50 26 47 34 C 45 40 45 46 47 52 C 50 62 59 69 69 70 C 63 75 54 78 45 78 C 32 78 23 69 23 56 C 23 46 30 37 40 33 C 32 38 29 48 31 57 C 33 66 41 73 50 73 C 58 73 65 69 69 63 C 67 76 60 86 50 86 Z"
+                      fill="url(#gold-grad-2)"
+                    />
+                  </g>
                 </svg>
                 <div className="flex flex-col justify-center leading-none text-black">
                   <span className="text-xl font-bold tracking-tight">OYEN</span>
