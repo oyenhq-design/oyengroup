@@ -36,6 +36,30 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50">
+      {/* Top Utility Bar */}
+      <div className="bg-[#111] border-b border-[#1f2937]">
+        <div className="max-w-7xl mx-auto px-6 h-11 flex items-center justify-between text-xs">
+          {/* Left: Language + Contacts */}
+          <div className="hidden md:flex items-center gap-6 text-[#9ca3af]">
+            <button className="hover:text-white transition">العربية</button>
+            <span className="text-[#1f2937]">|</span>
+            <button className="hover:text-white transition">English</button>
+            <span className="text-[#1f2937]">|</span>
+            <Link href="/contact" className="hover:text-white transition">
+              Global contacts
+            </Link>
+          </div>
+
+          {/* Right: Location */}
+          <div className="flex items-center gap-2 text-[#9ca3af]">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span className="hover:text-white transition">You are in OYEN Global</span>
+          </div>
+        </div>
+      </div>
+
       <nav
         className={`w-full transition-all duration-300 ${
           scrolled
