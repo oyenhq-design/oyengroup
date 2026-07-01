@@ -57,7 +57,25 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16 mb-12">
             {/* Company Info */}
             <div className="space-y-4">
-              <h3 className="text-base font-semibold text-white">OYEN Group</h3>
+              <div className="flex items-center gap-3">
+                <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="footer-gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#E5C158" />
+                      <stop offset="50%" stopColor="#D4AF37" />
+                      <stop offset="100%" stopColor="#9E7D3B" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M50 10C27.9 10 10 27.9 10 50C10 65.5 18.8 79 31.8 85.5C30.2 75.3 35.2 64.9 44.7 58.7C55.2 51.9 69 53.6 77.7 62.5C72 52.8 60.5 48.5 49.8 52C40.8 55 35.2 64.8 37.8 74.2C39.8 81.3 46.5 86.2 54 86.2C76.1 86.2 94 68.3 94 46.2C94 30.7 85.2 17.2 72.2 10.7C73.8 20.9 68.8 31.3 59.3 37.5C48.8 44.3 35 42.6 26.3 33.7C32 43.4 43.5 47.7 54.2 44.2C63.2 41.2 68.8 31.4 66.2 22C64.2 14.9 57.5 10 50 10Z"
+                    fill="url(#footer-gold-gradient)"
+                  />
+                </svg>
+                <div className="flex flex-col justify-center leading-none text-white">
+                  <span className="text-lg font-bold tracking-tight">OYEN</span>
+                  <span className="text-[8px] font-semibold tracking-[0.25em] text-gray-400 uppercase mt-0.5">GROUP</span>
+                </div>
+              </div>
               <p className="text-sm text-[#9ca3af] leading-relaxed max-w-xs">
                 Building a unified energy ecosystem across upstream, midstream, and downstream operations.
               </p>

@@ -5,290 +5,143 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [aboutHovered, setAboutHovered] = useState(false);
-  const [aboutLocked, setAboutLocked] = useState(false);
-  const aboutDropdownRef = useRef<HTMLDivElement>(null);
-  const closeDelayRef = useRef<NodeJS.Timeout | null>(null);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle click outside - close dropdown and unlock
+  // Handle click outside to close dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(event.target as Node)) {
-        setAboutHovered(false);
-        setAboutLocked(false);
-        if (closeDelayRef.current) {
-          clearTimeout(closeDelayRef.current);
-        }
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setProductsOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Handle ESC key
-  useEffect(() => {
-    const handleEscKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setAboutHovered(false);
-        setAboutLocked(false);
-        if (closeDelayRef.current) {
-          clearTimeout(closeDelayRef.current);
-        }
-      }
-    };
-    document.addEventListener('keydown', handleEscKey);
-    return () => document.removeEventListener('keydown', handleEscKey);
-  }, []);
-
-  // Handle dropdown close with delay
-  const handleAboutMouseLeave = () => {
-    if (aboutLocked) return; // Don't close if locked
-
-    if (closeDelayRef.current) {
-      clearTimeout(closeDelayRef.current);
-    }
-
-    closeDelayRef.current = setTimeout(() => {
-      setAboutHovered(false);
-    }, 100); // 100ms delay before closing
-  };
-
-  const handleAboutMouseEnter = () => {
-    if (closeDelayRef.current) {
-      clearTimeout(closeDelayRef.current);
-    }
-    setAboutHovered(true);
-  };
-
-  const handleAboutClick = () => {
-    setAboutLocked(!aboutLocked);
-    setAboutHovered(true);
-  };
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (closeDelayRef.current) {
-        clearTimeout(closeDelayRef.current);
-      }
-    };
-  }, []);
-
-  const navLinks = [
-    { label: 'ABOUT US', href: '/about', hasDropdown: true },
-    { label: 'WHAT WE DO', href: '/services' },
-    { label: 'SUSTAINABILITY', href: '/about' },
-    { label: 'INVESTORS', href: '/reports' },
-    { label: 'NEWS & MEDIA', href: '/news' },
-    { label: 'CAREERS', href: '/contact' },
-  ];
-
-  const aboutMenuItems = [
-    { label: 'About us', href: '#', isSectionLabel: true },
-    { label: 'At a glance', href: '/about/at-a-glance' },
-    { label: 'Our leadership', href: '/about/leadership', hasArrow: true },
-    { label: 'Our governance', href: '/about/governance', hasArrow: true },
-    { label: 'Our offices and facilities', href: '/about/offices' },
-    { label: 'Our history', href: '/about/history', hasArrow: true },
-    { label: 'Our brand', href: '/about/brand', hasArrow: true },
+  const productItems = [
+    { name: 'Upstream Operations', desc: 'Exploration support and drilling solutions', href: '/services' },
+    { name: 'Midstream Operations', desc: 'Logistics, storage, and energy transport', href: '/services' },
+    { name: 'Downstream Operations', desc: 'Refining support and distribution', href: '/services' },
   ];
 
   return (
     <header className="sticky top-0 z-50">
-      <style>{`
-        .about-dropdown-item {
-          position: relative;
-          transition: color 0.3s ease;
-        }
-
-        .about-dropdown-item::after {
-          content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 0;
-          height: 1px;
-          background-color: #d4af37;
-          transition: width 0.2s ease;
-        }
-
-        .about-dropdown-item:hover {
-          color: white;
-        }
-
-        .about-dropdown-item:hover::after {
-          width: 100%;
-        }
-
-        .about-dropdown-item.has-arrow:hover {
-          transform: translateX(4px);
-          transition: transform 0.3s ease;
-        }
-
-        .dropdown-enter {
-          animation: dropdownEnter 0.2s ease forwards;
-        }
-
-        @keyframes dropdownEnter {
-          from {
-            opacity: 0;
-            transform: translateY(-8px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .about-dropdown-backdrop {
-          backdrop-filter: blur(8px);
-        }
-      `}</style>
-
-      {/* Top Utility Bar */}
-      <div className="bg-[#111] border-b border-[#1f2937]">
-        <div className="max-w-7xl mx-auto px-6 h-11 flex items-center justify-between text-xs">
-          {/* Left: Language + Contacts */}
-          <div className="hidden md:flex items-center gap-6 text-[#9ca3af]">
-            <button className="hover:text-white transition">العربية</button>
-            <span className="text-[#1f2937]">|</span>
-            <button className="hover:text-white transition">English</button>
-            <span className="text-[#1f2937]">|</span>
-            <Link href="/contact" className="hover:text-white transition">
-              Global contacts
-            </Link>
-          </div>
-
-          {/* Right: Location */}
-          <div className="flex items-center gap-2 text-[#9ca3af]">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span className="hover:text-white transition">You are in OYEN Global</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
       <nav
-        className={`transition-all duration-300 ${
-          scrolled ? 'bg-black border-b border-[#1f2937]' : 'bg-black/50 backdrop-blur-sm'
+        className={`w-full transition-all duration-300 ${
+          scrolled
+            ? 'bg-[#FAF9F6]/95 backdrop-blur-md shadow-sm border-b border-[#EAE8E4]'
+            : 'bg-[#FAF9F6] border-b border-[#EAE8E4]/50'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16 gap-8">
-            {/* Left: Search Icon */}
-            <div className="hidden md:block relative">
-              {showSearch ? (
-                <input
-                  type="text"
-                  placeholder="Search OYEN..."
-                  className="bg-[#111] border border-[#1f2937] rounded-lg px-4 py-2 text-sm text-white placeholder-[#9ca3af] focus:outline-none focus:border-[#d4af37] w-64 transition"
-                  autoFocus
-                  onBlur={() => setShowSearch(false)}
-                />
-              ) : (
-                <button
-                  onClick={() => setShowSearch(true)}
-                  className="text-white hover:text-[#d4af37] transition p-2"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </button>
-              )}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            
+            {/* Left: Logo */}
+            <div className="flex items-center">
+              <Link href="/" className="flex items-center gap-3 group">
+                <svg className="w-9 h-9 transition-transform duration-500 group-hover:rotate-180" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#E5C158" />
+                      <stop offset="50%" stopColor="#D4AF37" />
+                      <stop offset="100%" stopColor="#9E7D3B" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M50 10C27.9 10 10 27.9 10 50C10 65.5 18.8 79 31.8 85.5C30.2 75.3 35.2 64.9 44.7 58.7C55.2 51.9 69 53.6 77.7 62.5C72 52.8 60.5 48.5 49.8 52C40.8 55 35.2 64.8 37.8 74.2C39.8 81.3 46.5 86.2 54 86.2C76.1 86.2 94 68.3 94 46.2C94 30.7 85.2 17.2 72.2 10.7C73.8 20.9 68.8 31.3 59.3 37.5C48.8 44.3 35 42.6 26.3 33.7C32 43.4 43.5 47.7 54.2 44.2C63.2 41.2 68.8 31.4 66.2 22C64.2 14.9 57.5 10 50 10Z"
+                    fill="url(#gold-gradient)"
+                  />
+                </svg>
+                <div className="flex flex-col justify-center leading-none text-black">
+                  <span className="text-xl font-bold tracking-tight">OYEN</span>
+                  <span className="text-[9px] font-semibold tracking-[0.25em] text-[#6b7280] uppercase mt-0.5">GROUP</span>
+                </div>
+              </Link>
             </div>
 
             {/* Center: Navigation Links */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) =>
-                link.hasDropdown ? (
-                  <div
-                    key={link.label}
-                    className="relative"
-                    ref={aboutDropdownRef}
-                    onMouseEnter={handleAboutMouseEnter}
-                    onMouseLeave={handleAboutMouseLeave}
+            <div className="hidden md:flex items-center gap-10">
+              {/* Products Dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setProductsOpen(!productsOpen)}
+                  className="flex items-center gap-1 text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+                >
+                  Products
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    <button
-                      onClick={handleAboutClick}
-                      className="text-xs font-semibold text-white hover:text-[#d4af37] transition tracking-wider group relative"
-                    >
-                      {link.label}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
-                    </button>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
 
-                    {/* Dropdown Menu - Show when hovered or locked */}
-                    {(aboutHovered || aboutLocked) && (
-                      <div
-                        className="dropdown-enter absolute top-full left-0 mt-2 w-72 bg-gradient-to-b from-[#111] to-[#0b0b0b] border-t border-[#1f2937] rounded-lg shadow-xl about-dropdown-backdrop"
-                        onMouseEnter={handleAboutMouseEnter}
-                        onMouseLeave={handleAboutMouseLeave}
+                {productsOpen && (
+                  <div className="absolute top-full left-0 mt-3 w-80 bg-white border border-[#EAE8E4] rounded-xl shadow-xl py-4 z-50">
+                    {productItems.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setProductsOpen(false)}
+                        className="block px-6 py-3 hover:bg-[#FAF9F6] transition-colors"
                       >
-                        {/* Soft divider */}
-                        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mt-0" />
-
-                        {/* Menu items */}
-                        <div className="py-6 px-6">
-                          {aboutMenuItems.map((item, index) => (
-                            <Link
-                              key={index}
-                              href={item.href}
-                              className={`block transition-colors duration-200 ${
-                                item.isSectionLabel
-                                  ? 'text-xs text-[#6b7280] font-semibold uppercase tracking-widest mb-4'
-                                  : 'about-dropdown-item text-sm text-[#d1d5db] py-2.5 mb-1'
-                              } ${
-                                item.hasArrow ? 'has-arrow' : ''
-                              }`}
-                              onClick={() => {
-                                // Close dropdown when clicking a link
-                                setAboutHovered(false);
-                                setAboutLocked(false);
-                              }}
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                        <p className="text-sm font-semibold text-[#1A1A1A]">{item.name}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
+                      </Link>
+                    ))}
                   </div>
-                ) : (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-xs font-semibold text-white hover:text-[#d4af37] transition tracking-wider group relative"
-                  >
-                    {link.label}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
-                  </Link>
-                )
-              )}
+                )}
+              </div>
+
+              <Link
+                href="/about#vision"
+                className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+              >
+                Vision
+              </Link>
+
+              <Link
+                href="/about"
+                className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+              >
+                Company
+              </Link>
+
+              <Link
+                href="/contact"
+                className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+              >
+                Contact
+              </Link>
             </div>
 
-            {/* Right: Logo */}
-            <div className="shrink-0">
+            {/* Right: CTA Button */}
+            <div className="hidden md:flex items-center">
               <Link
-                href="/"
-                className="text-xl font-bold text-[#d4af37] hover:text-[#e5c158] transition"
+                href="/contact"
+                className="px-6 py-2.5 text-xs font-semibold tracking-wider bg-[#0A0A0A] hover:bg-black text-white rounded-xl transition duration-300 flex items-center gap-2 group shadow-sm"
               >
-                OYEN
+                Partner With Us
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </Link>
             </div>
 
@@ -296,37 +149,71 @@ export default function Header() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-[#d4af37]"
+                className="text-[#1A1A1A] hover:text-[#D4AF37] p-2"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                {isOpen ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
               </button>
             </div>
           </div>
 
           {/* Mobile Navigation */}
           {isOpen && (
-            <div className="md:hidden pb-4 border-t border-[#1f2937]">
-              {navLinks.map((link) => (
+            <div className="md:hidden py-4 border-t border-[#EAE8E4] space-y-3 bg-[#FAF9F6]">
+              <div className="space-y-1">
+                <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Products</p>
+                {productItems.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-2 text-sm text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+              <div className="border-t border-[#EAE8E4] my-2"></div>
+              <Link
+                href="/about#vision"
+                onClick={() => setIsOpen(false)}
+                className="block px-3 py-2 text-sm font-medium text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
+              >
+                Vision
+              </Link>
+              <Link
+                href="/about"
+                onClick={() => setIsOpen(false)}
+                className="block px-3 py-2 text-sm font-medium text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
+              >
+                Company
+              </Link>
+              <Link
+                href="/contact"
+                onClick={() => setIsOpen(false)}
+                className="block px-3 py-2 text-sm font-medium text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
+              >
+                Contact
+              </Link>
+              <div className="pt-2 px-3">
                 <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block py-3 text-sm text-white hover:text-[#d4af37] transition"
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full justify-center px-6 py-3 text-xs font-semibold tracking-wider bg-[#0A0A0A] text-white rounded-xl transition duration-300 flex items-center gap-2"
                 >
-                  {link.label}
+                  Partner With Us
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </Link>
-              ))}
+              </div>
             </div>
           )}
         </div>
