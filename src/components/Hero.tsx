@@ -103,15 +103,15 @@ export default function Hero() {
 
       {/* Background Image with Gradient Overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat bg-[#FAF9F6]"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('/hero-bg.png')`,
-          backgroundPosition: 'right center',
+          backgroundImage: `url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&h=1080&fit=crop')`,
+          backgroundPosition: 'center 30%',
         }}
       />
 
-      {/* Gradient Overlay: Left to Right to blend illustration into light theme */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FAF9F6] via-[#FAF9F6]/90 to-[#FAF9F6]/20 lg:via-[#FAF9F6]/40 lg:to-transparent" />
+      {/* Gradient Overlay: Left to Right */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
 
       {/* Main Content Area */}
       <div className="relative flex-1 flex items-center">
@@ -133,12 +133,12 @@ export default function Hero() {
                 </p>
 
                 {/* Heading */}
-                <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-[#1A1A1A] mb-8">
+                <h1 className="text-5xl lg:text-6xl font-semibold leading-tight text-white mb-8">
                   {current.heading}
                 </h1>
 
                 {/* Supporting Paragraph */}
-                <p className="text-lg text-[#4A4A4A] mb-12 leading-relaxed font-medium">
+                <p className="text-lg text-gray-300 mb-12 leading-relaxed">
                   {current.paragraph}
                 </p>
 
@@ -147,7 +147,7 @@ export default function Hero() {
                   {/* CTA: Minimal Text + Arrow */}
                   <Link
                     href={current.ctaHref}
-                    className="inline-flex items-center gap-4 text-[#d4af37] hover:text-[#e5c158] transition duration-300 font-semibold group w-fit"
+                    className="inline-flex items-center gap-4 text-[#d4af37] hover:text-[#e5c158] transition duration-300 font-medium group w-fit"
                   >
                     <span>{current.ctaText}</span>
                     <div className="w-10 h-10 border border-[#d4af37] rounded-full flex items-center justify-center group-hover:bg-[#d4af37]/10 transition">
@@ -170,7 +170,7 @@ export default function Hero() {
                   {/* Tab Navigation */}
                   <div className="mt-4">
                     {/* Subtle Divider Line */}
-                    <div className="border-t border-[#EAE8E4] mb-6" />
+                    <div className="border-t border-[#1f2937] mb-6" />
 
                     {/* Tab Buttons with Progress Animation */}
                     <div className="flex items-center justify-between w-full pb-3">
@@ -178,18 +178,18 @@ export default function Hero() {
                         <button
                           key={item.id}
                           onClick={() => handleTabClick(item.id)}
-                          className="relative flex-1 text-center text-sm md:text-base font-semibold whitespace-nowrap transition-colors duration-300 pb-3"
+                          className="relative flex-1 text-center text-lg font-medium whitespace-nowrap transition-colors duration-300 pb-3"
                           style={{
-                            color: activeNav === item.id ? '#1A1A1A' : '#767676',
+                            color: activeNav === item.id ? '#ffffff' : '#9ca3af',
                           }}
                           onMouseEnter={(e) => {
                             if (activeNav !== item.id) {
-                              e.currentTarget.style.color = '#1A1A1A';
+                              e.currentTarget.style.color = '#ffffff';
                             }
                           }}
                           onMouseLeave={(e) => {
                             if (activeNav !== item.id) {
-                              e.currentTarget.style.color = '#767676';
+                              e.currentTarget.style.color = '#9ca3af';
                             }
                           }}
                         >
