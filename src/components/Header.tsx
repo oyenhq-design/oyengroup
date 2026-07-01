@@ -53,7 +53,7 @@ export default function Header() {
           {/* Right: Location */}
           <div className="flex items-center gap-2 text-[#9ca3af]">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h2.945M11.028 13.77A2.003 2.003 0 0112 10a2 2 0 001.5-3h.5m-3.5 13.52c0-.528.113-1.03.315-1.48L11 15h.75a1 1 0 011 1v1a1 1 0 001 1h.5a1 1 0 011 1v.76M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span className="hover:text-white transition">You are in OYEN Global</span>
           </div>
