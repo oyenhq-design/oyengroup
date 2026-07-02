@@ -41,13 +41,13 @@ function LoaderContent() {
   // Turn off loading once navigation completes
   useEffect(() => {
     if (isLoading) {
-      // Small timeout to ensure transition feels smooth
+      // Keep loading screen active for 4 seconds as requested
       const timer = setTimeout(() => {
         setIsLoading(false);
         // Hide overlay completely after fade out animation
         const fadeTimer = setTimeout(() => setShouldRender(false), 300);
         return () => clearTimeout(fadeTimer);
-      }, 400);
+      }, 4000);
 
       return () => clearTimeout(timer);
     }
