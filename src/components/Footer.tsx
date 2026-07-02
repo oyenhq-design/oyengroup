@@ -137,18 +137,6 @@ export default function Footer() {
                     OYEN GRID
                   </Link>
                 </li>
-                <li className="border-b border-white/5 pb-1.5">
-                  <span className="text-gray-600 block">OYEN LIVE</span>
-                  <span className="text-[9px] text-[#d4af37]/80 uppercase tracking-wider font-semibold">Coming Soon</span>
-                </li>
-                <li className="border-b border-white/5 pb-1.5">
-                  <span className="text-gray-600 block">OYEN AI</span>
-                  <span className="text-[9px] text-[#d4af37]/80 uppercase tracking-wider font-semibold">Coming Soon</span>
-                </li>
-                <li className="border-b border-white/5 pb-1.5">
-                  <span className="text-gray-600 block">OYEN LIBRARY</span>
-                  <span className="text-[9px] text-[#d4af37]/80 uppercase tracking-wider font-semibold">Coming Soon</span>
-                </li>
               </ul>
             </div>
 
