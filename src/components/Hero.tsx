@@ -185,12 +185,12 @@ export default function Hero() {
       <div
         className={`absolute inset-0 z-20 transition-opacity duration-1000 pointer-events-none ${
           currentBg.isLight ? 'opacity-100' : 'opacity-0'
-        } bg-gradient-to-r from-[#FAF9F6] via-[#FAF9F6]/90 to-transparent`}
+        } bg-gradient-to-r from-[#FAF9F6] via-[#FAF9F6]/50 to-transparent`}
       />
       <div
         className={`absolute inset-0 z-20 transition-opacity duration-1000 pointer-events-none ${
           currentBg.isLight ? 'opacity-0' : 'opacity-100'
-        } bg-gradient-to-r from-black/90 via-black/60 to-transparent`}
+        } bg-gradient-to-r from-black/85 via-black/30 to-transparent`}
       />
 
       {/* Left/Right Manual Arrow Controls */}
