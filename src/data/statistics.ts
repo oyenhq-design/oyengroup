@@ -7,22 +7,22 @@ export interface Statistic {
 export const statistics: Statistic[] = [
   {
     value: "01",
-    label: "Integrated Energy Focus",
-    description: "Building solutions across upstream, midstream, and downstream operations",
+    label: "Technology",
+    description: "Building software platforms that modernize organizations, improve productivity, and simplify complex operations.",
   },
   {
     value: "02",
-    label: "Technology-Driven Approach",
-    description: "Leveraging data, analytics, and modern engineering tools",
+    label: "Artificial Intelligence",
+    description: "Developing intelligent systems that automate workflows, generate insights, and enhance decision-making.",
   },
   {
     value: "03",
-    label: "Sustainability Commitment",
-    description: "Focused on responsible energy and long-term impact",
+    label: "Digital Infrastructure",
+    description: "Creating connected platforms that power communication, collaboration, learning, and organizational growth.",
   },
   {
     value: "04",
-    label: "Growing Network",
-    description: "Expanding partnerships and capabilities across the energy value chain",
+    label: "Energy & Industrial Innovation",
+    description: "Expanding into engineering, digital energy technologies, and industrial solutions that support the future of infrastructure.",
   },
 ];

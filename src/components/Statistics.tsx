@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { statistics } from '@/data/statistics';
 import { useEffect, useRef, useState } from 'react';
 
-const CARD_ICONS = ['⚡', '📊', '🌱', '🔗'];
+const CARD_ICONS = ['💻', '🧠', '🌐', '⚡'];
 
 export default function Statistics() {
   const [animatedItems, setAnimatedItems] = useState(new Set());
@@ -87,22 +87,22 @@ export default function Statistics() {
         }
 
         .header-title {
-          font-size: 2.5rem;
+          font-size: 2.25rem;
           font-weight: 700;
           line-height: 1.2;
           color: #ffffff;
-          margin-bottom: 12px;
+          margin-bottom: 16px;
         }
 
         @media (min-width: 768px) {
           .header-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
           }
         }
 
         @media (min-width: 1024px) {
           .header-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
           }
         }
 
@@ -110,7 +110,7 @@ export default function Statistics() {
           font-size: 0.95rem;
           color: rgba(255, 255, 255, 0.65);
           line-height: 1.6;
-          max-width: 300px;
+          max-width: 500px;
         }
 
         .header-divider {
@@ -275,11 +275,14 @@ export default function Statistics() {
         }
 
         .card-label {
-          font-size: 0.85rem;
+          font-size: 0.95rem;
           font-weight: 600;
           color: #ffffff;
           margin-bottom: 8px;
           line-height: 1.4;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
         }
 
         .card-description {
@@ -317,16 +320,16 @@ export default function Statistics() {
         {headerVisible && (
           <div className="header-section">
             <div className="header-left">
-              <span className="header-label">Overview</span>
-              <h2 className="header-title">At a Glance</h2>
+              <span className="header-label">OUR BUSINESS</span>
+              <h2 className="header-title">Building Across Four Strategic Pillars</h2>
               <p className="header-description">
-                Four pillars driving integrated energy solutions and sustainable value creation.
+                OYEN GROUP is building a diversified technology company focused on creating long-term value through software, intelligent systems, digital infrastructure, and future energy innovation.
               </p>
             </div>
             <div className="header-divider" />
             <div className="header-right">
               <Link href="/about/at-a-glance" className="cta-link">
-                <span>Explore More</span>
+                <span>Explore Our Vision</span>
                 <span className="cta-arrow">→</span>
               </Link>
             </div>
@@ -350,11 +353,15 @@ export default function Statistics() {
                 <div className="card-icon">{CARD_ICONS[index]}</div>
               </div>
               <div className="card-divider" />
-              <h3 className="card-label">{stat.label}</h3>
+              <h3 className="card-label">
+                <span>{stat.label}</span>
+                {index === 3 && (
+                  <span className="w-fit text-[9px] font-bold tracking-wider px-2 py-0.5 rounded bg-[#d4af37]/10 text-[#d4af37] border border-[#d4af37]/20 uppercase">
+                    Long-Term Vision
+                  </span>
+                )}
+              </h3>
               <p className="card-description">{stat.description}</p>
-              <div className="mt-auto pt-4 text-3xl md:text-4xl font-bold text-[#d4af37]">
-                {stat.value}
-              </div>
             </div>
           ))}
         </div>
