@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 export default function CTA() {
   return (
-    <section className="bg-black py-16 md:py-24">
+    <section className="bg-black py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative overflow-hidden bg-[#0a0a0a] border border-[#1f2937]/50 rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+        <div className="relative overflow-hidden bg-[#0a0a0a] border border-[#1f2937]/50 rounded-2xl md:rounded-3xl py-6 px-8 md:py-8 md:px-12 lg:py-10 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
           
           {/* Animated/Interactive dot wave SVG background */}
           <div className="absolute inset-0 w-full h-full pointer-events-none opacity-80 mix-blend-screen">
@@ -84,7 +84,7 @@ export default function CTA() {
           <div className="relative z-10 flex-shrink-0">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 bg-[#d4af37] hover:bg-[#e5c158] text-[#0f0f0f] font-bold px-8 py-4 rounded-xl transition duration-300 shadow-lg group"
+              className="inline-flex items-center gap-3 bg-[#d4af37] hover:bg-[#e5c158] text-[#0f0f0f] font-bold px-8 py-3 rounded-xl transition duration-300 shadow-lg group"
             >
               <span>Contact Us Today</span>
               <svg

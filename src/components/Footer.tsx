@@ -57,16 +57,12 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16 mb-12">
             {/* Company Info */}
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center">
                 <img
                   src="/logo.png"
                   alt="Oyen Group Logo"
-                  className="w-8 h-8 object-contain"
+                  className="h-9 w-auto object-contain"
                 />
-                <div className="flex flex-col justify-center leading-none text-white">
-                  <span className="text-lg font-bold tracking-tight">OYEN</span>
-                  <span className="text-[8px] font-semibold tracking-[0.25em] text-gray-400 uppercase mt-0.5">GROUP</span>
-                </div>
               </div>
               <p className="text-sm text-[#9ca3af] leading-relaxed max-w-xs">
                 Building a unified energy ecosystem across upstream, midstream, and downstream operations.

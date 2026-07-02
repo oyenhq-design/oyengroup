@@ -69,16 +69,12 @@ export default function Header() {
 
             {/* Left: Logo */}
             <div className="flex items-center">
-              <Link href="/" className="flex items-center gap-3 group">
+              <Link href="/" className="flex items-center group">
                 <img
                   src="/logo.png"
                   alt="Oyen Group Logo"
-                  className="w-9 h-9 object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="h-10 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="flex flex-col justify-center leading-none text-black">
-                  <span className="text-xl font-bold tracking-tight">OYEN</span>
-                  <span className="text-[9px] font-semibold tracking-[0.25em] uppercase mt-0.5 text-[#6b7280]">GROUP</span>
-                </div>
               </Link>
             </div>
 
