@@ -81,7 +81,9 @@ export default function Ecosystem() {
               steps.button ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
             }`}>
               <Link
-                href="/services"
+                href="https://oyengridlanding.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 text-xs font-semibold tracking-wider text-black bg-[#d4af37] hover:bg-[#e5c158] rounded-xl transition duration-300 group shadow-lg shadow-[#d4af37]/10"
               >
                 <span>Explore OYEN GRID</span>

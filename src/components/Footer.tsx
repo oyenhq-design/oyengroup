@@ -133,7 +133,12 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5 text-xs font-medium">
                 <li className="border-b border-white/5 pb-1.5">
-                  <Link href="#" className="footer-link text-gray-400 hover:text-[#d4af37]">
+                  <Link
+                    href="https://oyengridlanding.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer-link text-gray-400 hover:text-[#d4af37]"
+                  >
                     OYEN GRID
                   </Link>
                 </li>
