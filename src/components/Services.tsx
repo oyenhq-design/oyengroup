@@ -3,16 +3,16 @@
 export default function Services() {
   const features = [
     {
-      title: 'Tools',
-      description: 'Advanced technology designed for optimal performance and efficiency.',
+      title: 'Digital Infrastructure',
+      description: 'Building connected software platforms that modernize how organizations operate, collaborate, and grow.',
     },
     {
-      title: 'Learning',
-      description: 'Continuous insights and resources to drive innovation and growth.',
+      title: 'Intelligence & Innovation',
+      description: 'Applying artificial intelligence and emerging technologies to improve decision-making, automation, and operational efficiency.',
     },
     {
-      title: 'Insights',
-      description: 'Data-driven intelligence to inform strategic decision making.',
+      title: 'Industry & Energy',
+      description: 'Developing technology and engineering solutions that support the future of energy, industrial operations, and sustainable infrastructure.',
     },
   ];
 
@@ -20,20 +20,20 @@ export default function Services() {
     <section className="bg-gradient-to-b from-black to-[#0b0b0b] py-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* Intro Block - Center Aligned */}
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
           {/* Label */}
           <p className="text-sm tracking-widest text-[#d4af37] uppercase font-semibold mb-6">
-            Discover OYEN
+            DISCOVER OYEN
           </p>
 
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold leading-tight text-white mb-6">
-            Everything You Need to Succeed
+            Engineering Tomorrow Through Technology.
           </h2>
 
           {/* Supporting Paragraph */}
           <p className="text-base md:text-lg text-[#9ca3af] leading-relaxed">
-            OYEN Group is an integrated petroleum and energy company delivering solutions across upstream, midstream, and downstream operations—powered by advanced technology, data, and a commitment to innovation, efficiency, and sustainability.
+            OYEN GROUP is a technology company building digital infrastructure, intelligent software, and future industrial solutions that help organizations and industries operate more efficiently. Our long-term vision extends beyond software into artificial intelligence, engineering innovation, and energy technology.
           </p>
         </div>
 
@@ -42,9 +42,9 @@ export default function Services() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-[#111] border border-white/5 rounded-xl p-6 hover:border-[#d4af37] transition duration-300"
+              className="bg-[#111] border border-white/5 rounded-xl p-8 hover:border-[#d4af37]/50 transition duration-300 shadow-xl"
             >
-              <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{feature.title}</h3>
               <p className="text-sm text-[#9ca3af] leading-relaxed">{feature.description}</p>
             </div>
           ))}
