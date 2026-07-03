@@ -44,13 +44,19 @@ export default function Statistics() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-28 lg:py-32 bg-[#0A1628] text-white overflow-hidden"
+      className="relative py-24 md:py-28 lg:py-32 bg-black text-white overflow-hidden border-t border-white/5"
     >
+      {/* Background Image with opacity overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-[0.22] mix-blend-screen pointer-events-none select-none"
+        style={{ backgroundImage: "url('/pillars-bg.jpg')" }}
+      />
+
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0F1E30] via-transparent to-[#0A1628] opacity-40 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-transparent to-black opacity-60 pointer-events-none" />
 
       {/* Optional faint energy wave texture at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A1628]/60 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
       <style>{`
         .header-section {
           display: flex;
