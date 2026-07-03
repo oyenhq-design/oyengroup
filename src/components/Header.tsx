@@ -72,9 +72,11 @@ export default function Header() {
   ];
 
   const resourceItems = [
-    { name: 'Blog', desc: 'Read our latest news and updates.', href: '/news' },
+    { name: 'News & Media', desc: 'Insights, stories, and engineering news.', href: '/news' },
     { name: 'Case Studies', desc: 'Explore our projects and success stories.', href: '/case-studies' },
     { name: 'Documentation', desc: 'Technical guides and API resources.', href: '#' },
+    { name: 'Brand Assets', desc: 'Official logos, colors, and media kits.', href: '#' },
+    { name: 'Press Kit', desc: 'Materials and resources for media coverage.', href: '#' },
   ];
 
   return (
