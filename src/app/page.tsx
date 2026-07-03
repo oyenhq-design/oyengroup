@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import Philosophy from '@/components/Philosophy';
 import Statistics from '@/components/Statistics';
 import Ecosystem from '@/components/Ecosystem';
 import Journey from '@/components/Journey';
@@ -12,6 +13,7 @@ export default function Home() {
       <LayeredScrollContainer>
         <Hero />
         <Services />
+        <Philosophy />
         <Statistics />
         <Ecosystem />
         <Journey />
