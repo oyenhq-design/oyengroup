@@ -45,8 +45,14 @@ export default function Ecosystem() {
   return (
     <section
       ref={containerRef}
-      className="relative py-24 md:py-28 lg:py-32 bg-[#050505] text-white overflow-hidden border-t border-white/5"
+      className="relative py-24 md:py-28 lg:py-32 bg-black text-white overflow-hidden border-t border-white/5"
     >
+      {/* Background Image with opacity overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-[0.15] mix-blend-screen pointer-events-none select-none"
+        style={{ backgroundImage: "url('/ecosystem-bg.png')" }}
+      />
+
       {/* Soft background ambient glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#d4af37]/5 rounded-full blur-[120px] pointer-events-none" />
 
