@@ -5,6 +5,12 @@ import Link from 'next/link';
 export default function CTA() {
   return (
     <section className="bg-black py-20 md:py-24 lg:py-28 text-white relative overflow-hidden border-t border-white/5">
+      {/* Background Image with opacity overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-[0.14] mix-blend-screen pointer-events-none select-none"
+        style={{ backgroundImage: "url('/cta-bg.jpg')" }}
+      />
+
       {/* Background ambient light */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#d4af37]/5 rounded-full blur-[100px] pointer-events-none" />
 
