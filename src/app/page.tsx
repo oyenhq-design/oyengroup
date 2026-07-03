@@ -4,7 +4,7 @@ import Philosophy from '@/components/Philosophy';
 import Statistics from '@/components/Statistics';
 import Ecosystem from '@/components/Ecosystem';
 import Journey from '@/components/Journey';
-import LeadershipPreview from '@/components/LeadershipPreview';
+import LeadershipSlideIn from '@/components/LeadershipSlideIn';
 import CTA from '@/components/CTA';
 import LayeredScrollContainer from '@/components/LayeredScrollContainer';
 
@@ -18,9 +18,9 @@ export default function Home() {
         <Statistics />
         <Ecosystem />
         <Journey />
-        <LeadershipPreview />
         <CTA />
       </LayeredScrollContainer>
+      <LeadershipSlideIn />
     </main>
   );
 }
