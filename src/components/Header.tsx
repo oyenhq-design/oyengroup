@@ -241,12 +241,6 @@ export default function Header() {
                 )}
               </div>
 
-              <Link
-                href="#"
-                className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
-              >
-                Pricing
-              </Link>
             </div>
 
             {/* Right: CTA Button */}
@@ -338,14 +332,6 @@ export default function Header() {
                   </Link>
                 ))}
               </div>
-              <div className="border-t border-[#EAE8E4] my-2"></div>
-              <Link
-                href="#"
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 text-sm font-medium text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
-              >
-                Pricing
-              </Link>
               <div className="pt-2 px-3">
                 <Link
                   href="/contact"
