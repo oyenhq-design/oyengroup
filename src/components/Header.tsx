@@ -6,8 +6,11 @@ import { useState, useEffect, useRef } from 'react';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [activeDropdown, setActiveDropdown] = useState<'products' | 'company' | 'resources' | null>(null);
+
+  const productsRef = useRef<HTMLDivElement>(null);
+  const companyRef = useRef<HTMLDivElement>(null);
+  const resourcesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,21 +20,61 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle click outside to close dropdown
+  // Handle click outside to close dropdowns
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setProductsOpen(false);
+      const target = event.target as Node;
+      if (
+        !(productsRef.current && productsRef.current.contains(target)) &&
+        !(companyRef.current && companyRef.current.contains(target)) &&
+        !(resourcesRef.current && resourcesRef.current.contains(target))
+      ) {
+        setActiveDropdown(null);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Handle Esc key to close dropdowns
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  const toggleDropdown = (dropdown: 'products' | 'company' | 'resources') => {
+    setActiveDropdown((prev) => (prev === dropdown ? null : dropdown));
+  };
+
+  const handleDropdownKeyDown = (e: React.KeyboardEvent, dropdown: 'products' | 'company' | 'resources') => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleDropdown(dropdown);
+    }
+  };
+
   const productItems = [
     { name: 'Upstream Operations', desc: 'Exploration support and drilling solutions', href: '/services' },
     { name: 'Midstream Operations', desc: 'Logistics, storage, and energy transport', href: '/services' },
     { name: 'Downstream Operations', desc: 'Refining support and distribution', href: '/services' },
+  ];
+
+  const companyItems = [
+    { name: 'About OYEN', desc: 'Learn our story and mission.', href: '/about' },
+    { name: 'Leadership', desc: 'Meet the people building the future.', href: '/about/leadership' },
+    { name: 'Careers', desc: 'Join our growing team.', href: '#' },
+    { name: 'Partners', desc: 'Build with OYEN.', href: '#' },
+  ];
+
+  const resourceItems = [
+    { name: 'Blog', desc: 'Read our latest news and updates.', href: '/news' },
+    { name: 'Case Studies', desc: 'Explore our projects and success stories.', href: '/case-studies' },
+    { name: 'Documentation', desc: 'Technical guides and API resources.', href: '#' },
   ];
 
   return (
@@ -81,14 +124,17 @@ export default function Header() {
             {/* Center: Navigation Links */}
             <div className="hidden md:flex items-center gap-10">
               {/* Products Dropdown */}
-              <div className="relative" ref={dropdownRef}>
+              <div className="relative" ref={productsRef}>
                 <button
-                  onClick={() => setProductsOpen(!productsOpen)}
+                  onClick={() => toggleDropdown('products')}
+                  onKeyDown={(e) => handleDropdownKeyDown(e, 'products')}
+                  aria-expanded={activeDropdown === 'products'}
+                  aria-haspopup="true"
                   className="flex items-center gap-1 text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
                 >
                   Products
                   <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? 'rotate-180' : ''}`}
+                    className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'products' ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -97,16 +143,16 @@ export default function Header() {
                   </svg>
                 </button>
 
-                {productsOpen && (
+                {activeDropdown === 'products' && (
                   <div className="absolute top-full left-0 mt-3 w-80 bg-white border border-[#EAE8E4] rounded-xl shadow-xl py-4 z-50">
                     {productItems.map((item, idx) => (
                       <Link
                         key={idx}
                         href={item.href}
-                        onClick={() => setProductsOpen(false)}
-                        className="block px-6 py-3 hover:bg-[#FAF9F6] transition-colors"
+                        onClick={() => setActiveDropdown(null)}
+                        className="block px-6 py-3 hover:bg-[#FAF9F6] transition-colors rounded-lg mx-2"
                       >
-                        <p className="text-sm font-semibold text-[#1A1A1A]">{item.name}</p>
+                        <p className="text-sm font-semibold text-[#1A1A1A] hover:text-[#D4AF37] transition-colors">{item.name}</p>
                         <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
                       </Link>
                     ))}
@@ -121,18 +167,85 @@ export default function Header() {
                 Vision
               </Link>
 
-              <Link
-                href="/about"
-                className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
-              >
-                Company
-              </Link>
+              {/* Company Dropdown */}
+              <div className="relative" ref={companyRef}>
+                <button
+                  onClick={() => toggleDropdown('company')}
+                  onKeyDown={(e) => handleDropdownKeyDown(e, 'company')}
+                  aria-expanded={activeDropdown === 'company'}
+                  aria-haspopup="true"
+                  className="flex items-center gap-1 text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+                >
+                  Company
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'company' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {activeDropdown === 'company' && (
+                  <div className="absolute top-full left-0 mt-3 w-80 bg-white border border-[#EAE8E4] rounded-xl shadow-xl py-4 z-50">
+                    {companyItems.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setActiveDropdown(null)}
+                        className="block px-6 py-3 hover:bg-[#FAF9F6] transition-colors rounded-lg mx-2"
+                      >
+                        <p className="text-sm font-semibold text-[#1A1A1A] hover:text-[#D4AF37] transition-colors">{item.name}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Resources Dropdown */}
+              <div className="relative" ref={resourcesRef}>
+                <button
+                  onClick={() => toggleDropdown('resources')}
+                  onKeyDown={(e) => handleDropdownKeyDown(e, 'resources')}
+                  aria-expanded={activeDropdown === 'resources'}
+                  aria-haspopup="true"
+                  className="flex items-center gap-1 text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
+                >
+                  Resources
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'resources' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {activeDropdown === 'resources' && (
+                  <div className="absolute top-full left-0 mt-3 w-80 bg-white border border-[#EAE8E4] rounded-xl shadow-xl py-4 z-50">
+                    {resourceItems.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setActiveDropdown(null)}
+                        className="block px-6 py-3 hover:bg-[#FAF9F6] transition-colors rounded-lg mx-2"
+                      >
+                        <p className="text-sm font-semibold text-[#1A1A1A] hover:text-[#D4AF37] transition-colors">{item.name}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <Link
-                href="/contact"
+                href="#"
                 className="text-sm font-medium text-[#1A1A1A] hover:text-[#D4AF37] transition duration-200"
               >
-                Contact
+                Pricing
               </Link>
             </div>
 
@@ -175,15 +288,15 @@ export default function Header() {
 
           {/* Mobile Navigation */}
           {isOpen && (
-            <div className="md:hidden py-4 border-t border-[#EAE8E4] space-y-3 bg-[#FAF9F6]">
+            <div className="md:hidden py-4 border-t border-[#EAE8E4] space-y-4 bg-[#FAF9F6] max-h-[calc(100vh-120px)] overflow-y-auto px-2">
               <div className="space-y-1">
-                <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Products</p>
+                <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Products</p>
                 {productItems.map((item, idx) => (
                   <Link
                     key={idx}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 text-sm text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
+                    className="block px-3 py-1.5 text-sm text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
                   >
                     {item.name}
                   </Link>
@@ -197,19 +310,41 @@ export default function Header() {
               >
                 Vision
               </Link>
+              <div className="border-t border-[#EAE8E4] my-2"></div>
+              <div className="space-y-1">
+                <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Company</p>
+                {companyItems.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-1.5 text-sm text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+              <div className="border-t border-[#EAE8E4] my-2"></div>
+              <div className="space-y-1">
+                <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Resources</p>
+                {resourceItems.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-1.5 text-sm text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+              <div className="border-t border-[#EAE8E4] my-2"></div>
               <Link
-                href="/about"
+                href="#"
                 onClick={() => setIsOpen(false)}
                 className="block px-3 py-2 text-sm font-medium text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
               >
-                Company
-              </Link>
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 text-sm font-medium text-[#1A1A1A] hover:bg-[#FAF9F6] rounded-lg"
-              >
-                Contact
+                Pricing
               </Link>
               <div className="pt-2 px-3">
                 <Link
