@@ -110,54 +110,98 @@ export default function CTA() {
         </div>
 
         {/* Section 2: BUILD THE FUTURE (Final CTA Box) */}
-        <div className="relative overflow-hidden bg-[#0a0a0a] border border-white/10 rounded-2xl py-10 px-8 md:py-12 md:px-14 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+        <div className="relative overflow-hidden bg-gradient-to-r from-[#0a0a0c] to-[#0c0c10] border border-white/10 rounded-3xl py-12 px-8 md:py-16 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_30px_80px_rgba(0,0,0,0.6)] group/banner">
           
-          {/* Animated dot wave background */}
-          <div className="absolute inset-0 w-full h-full pointer-events-none opacity-70 mix-blend-screen">
+          {/* Subtle Ambient Glow behind the wave */}
+          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[350px] h-[150px] bg-gradient-to-r from-[#ff9f43]/5 to-[#d4af37]/10 rounded-full blur-[80px] pointer-events-none mix-blend-screen" />
+
+          {/* Organic Glowing Particle Wave Ribbon */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none opacity-80 mix-blend-screen">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 1200 300"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover scale-y-110"
               preserveAspectRatio="none"
             >
               <defs>
-                <linearGradient id="cta-dots-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="cta-dots-glow-premium" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#d4af37" stopOpacity="0" />
-                  <stop offset="40%" stopColor="#ff9f43" stopOpacity="0.45" />
-                  <stop offset="70%" stopColor="#e5c158" stopOpacity="0.45" />
+                  <stop offset="25%" stopColor="#e05e00" stopOpacity="0.45" />
+                  <stop offset="50%" stopColor="#ffb900" stopOpacity="0.6" />
+                  <stop offset="75%" stopColor="#ffe082" stopOpacity="0.5" />
                   <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
                 </linearGradient>
               </defs>
+              {/* Ribbon line 1 */}
               <path
-                d="M -50 200 Q 250 80 550 200 T 1150 140"
+                d="M -50 180 Q 250 80 550 180 T 1150 120"
                 fill="none"
-                stroke="url(#cta-dots-glow)"
+                stroke="url(#cta-dots-glow-premium)"
                 strokeWidth="1.5"
-                strokeDasharray="1, 10"
+                strokeDasharray="1, 11"
                 strokeLinecap="round"
               />
+              {/* Ribbon line 2 */}
               <path
-                d="M -50 210 Q 270 90 570 210 T 1170 150"
+                d="M -50 185 Q 265 90 565 175 T 1165 125"
                 fill="none"
-                stroke="url(#cta-dots-glow)"
+                stroke="url(#cta-dots-glow-premium)"
                 strokeWidth="2.5"
+                strokeDasharray="1, 13"
+                strokeLinecap="round"
+              />
+              {/* Ribbon line 3 */}
+              <path
+                d="M -50 190 Q 280 70 580 190 T 1180 115"
+                fill="none"
+                stroke="url(#cta-dots-glow-premium)"
+                strokeWidth="3.5"
+                strokeDasharray="1, 15"
+                strokeLinecap="round"
+              />
+              {/* Ribbon line 4 */}
+              <path
+                d="M -50 195 Q 295 100 595 170 T 1195 130"
+                fill="none"
+                stroke="url(#cta-dots-glow-premium)"
+                strokeWidth="2"
+                strokeDasharray="1, 9"
+                strokeLinecap="round"
+              />
+              {/* Ribbon line 5 */}
+              <path
+                d="M -50 200 Q 310 60 610 195 T 1210 110"
+                fill="none"
+                stroke="url(#cta-dots-glow-premium)"
+                strokeWidth="3.5"
+                strokeDasharray="1, 16"
+                strokeLinecap="round"
+              />
+              {/* Ribbon line 6 */}
+              <path
+                d="M -50 205 Q 325 110 625 165 T 1225 135"
+                fill="none"
+                stroke="url(#cta-dots-glow-premium)"
+                strokeWidth="1.5"
                 strokeDasharray="1, 12"
                 strokeLinecap="round"
               />
+              {/* Ribbon line 7 */}
               <path
-                d="M -50 220 Q 290 100 590 220 T 1190 160"
+                d="M -50 210 Q 340 50 640 200 T 1240 105"
                 fill="none"
-                stroke="url(#cta-dots-glow)"
-                strokeWidth="3.5"
+                stroke="url(#cta-dots-glow-premium)"
+                strokeWidth="2.5"
                 strokeDasharray="1, 14"
                 strokeLinecap="round"
               />
+              {/* Ribbon line 8 */}
               <path
-                d="M -50 230 Q 310 110 610 230 T 1210 170"
+                d="M -50 215 Q 355 120 655 160 T 1255 140"
                 fill="none"
-                stroke="url(#cta-dots-glow)"
+                stroke="url(#cta-dots-glow-premium)"
                 strokeWidth="2"
-                strokeDasharray="1, 9"
+                strokeDasharray="1, 10"
                 strokeLinecap="round"
               />
             </svg>
@@ -165,22 +209,23 @@ export default function CTA() {
 
           {/* Left Block */}
           <div className="relative z-10 flex flex-col items-start text-left max-w-xl space-y-4">
-            <span className="text-[10px] tracking-widest text-[#d4af37] uppercase font-bold">
+            <span className="text-[10px] tracking-[0.25em] text-[#d4af37] uppercase font-bold block mb-1">
               BUILD THE FUTURE
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-4xl font-light text-white tracking-tight leading-tight">
               Let's Build What's Next.
             </h2>
             <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-light">
-              Whether you're an organization, investor, partner, or future team member, we'd love to explore how we can create meaningful impact together.
+              Whether you're an organization, investor, partner, or future team member, <br className="hidden sm:inline" />
+              we'd love to explore how we can create meaningful impact together.
             </p>
           </div>
 
-          {/* Right Block - Contact Button */}
+          {/* Right Block - Premium Contact Button */}
           <div className="relative z-10 flex-shrink-0">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-semibold tracking-wider bg-[#d4af37] hover:bg-[#e5c158] text-black rounded-xl transition duration-300 shadow-lg shadow-[#d4af37]/10 group"
+              className="inline-flex items-center gap-2 px-7 py-4 text-xs font-semibold tracking-wider bg-[#d4af37] hover:bg-[#e5c158] text-black rounded-xl transition-all duration-300 shadow-[0_4px_20px_rgba(212,175,55,0.15)] hover:shadow-[0_4px_30px_rgba(212,175,55,0.35)] hover:-translate-y-0.5 group"
             >
               <span>Contact Us Today</span>
               <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
