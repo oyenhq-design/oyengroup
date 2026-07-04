@@ -110,10 +110,10 @@ export default function CTA() {
         </div>
 
         {/* Section 2: BUILD THE FUTURE (Final CTA Box) */}
-        <div className="relative overflow-hidden bg-[#0d0d0d] border border-white/5 rounded-3xl py-12 px-8 md:py-16 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+        <div className="relative overflow-hidden bg-[#0a0a0a] border border-white/10 rounded-2xl py-10 px-8 md:py-12 md:px-14 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
           
           {/* Animated dot wave background */}
-          <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40 mix-blend-screen">
+          <div className="absolute inset-0 w-full h-full pointer-events-none opacity-70 mix-blend-screen">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 1200 300"
@@ -121,26 +121,43 @@ export default function CTA() {
               preserveAspectRatio="none"
             >
               <defs>
-                <linearGradient id="cta-dots" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="cta-dots-glow" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#d4af37" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#e5c158" stopOpacity="0.3" />
+                  <stop offset="40%" stopColor="#ff9f43" stopOpacity="0.45" />
+                  <stop offset="70%" stopColor="#e5c158" stopOpacity="0.45" />
                   <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <path
-                d="M -50 150 Q 300 30 650 180 T 1250 130"
+                d="M -50 200 Q 250 80 550 200 T 1150 140"
                 fill="none"
-                stroke="url(#cta-dots)"
-                strokeWidth="4"
-                strokeDasharray="1, 15"
+                stroke="url(#cta-dots-glow)"
+                strokeWidth="1.5"
+                strokeDasharray="1, 10"
                 strokeLinecap="round"
               />
               <path
-                d="M -50 170 Q 280 50 630 200 T 1250 150"
+                d="M -50 210 Q 270 90 570 210 T 1170 150"
                 fill="none"
-                stroke="url(#cta-dots)"
-                strokeWidth="3"
+                stroke="url(#cta-dots-glow)"
+                strokeWidth="2.5"
                 strokeDasharray="1, 12"
+                strokeLinecap="round"
+              />
+              <path
+                d="M -50 220 Q 290 100 590 220 T 1190 160"
+                fill="none"
+                stroke="url(#cta-dots-glow)"
+                strokeWidth="3.5"
+                strokeDasharray="1, 14"
+                strokeLinecap="round"
+              />
+              <path
+                d="M -50 230 Q 310 110 610 230 T 1210 170"
+                fill="none"
+                stroke="url(#cta-dots-glow)"
+                strokeWidth="2"
+                strokeDasharray="1, 9"
                 strokeLinecap="round"
               />
             </svg>
@@ -154,24 +171,21 @@ export default function CTA() {
             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
               Let's Build What's Next.
             </h2>
-            <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-medium">
+            <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-light">
               Whether you're an organization, investor, partner, or future team member, we'd love to explore how we can create meaningful impact together.
             </p>
           </div>
 
-          {/* Right Block - Buttons */}
-          <div className="relative z-10 flex flex-wrap md:flex-nowrap items-center gap-4 flex-shrink-0">
+          {/* Right Block - Contact Button */}
+          <div className="relative z-10 flex-shrink-0">
             <Link
               href="/contact"
-              className="px-6 py-3.5 text-xs font-semibold tracking-wider bg-[#d4af37] hover:bg-[#e5c158] text-black rounded-xl transition duration-300 shadow-md shadow-[#d4af37]/10"
+              className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-semibold tracking-wider bg-[#d4af37] hover:bg-[#e5c158] text-black rounded-xl transition duration-300 shadow-lg shadow-[#d4af37]/10 group"
             >
-              Partner With Us
-            </Link>
-            <Link
-              href="/contact"
-              className="px-6 py-3.5 text-xs font-semibold tracking-wider bg-transparent hover:bg-white/5 text-white border border-white/20 rounded-xl transition duration-300"
-            >
-              Contact Us
+              <span>Contact Us Today</span>
+              <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
             </Link>
           </div>
 
